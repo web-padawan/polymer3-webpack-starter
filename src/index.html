@@ -1,0 +1,53 @@
+<!--
+@license
+Copyright (c) 2018 Vaadin Ltd.
+This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="description" content="Polymer 3 Webpack app">
+
+    <title>Polymer 3 Webpack app</title>
+
+    <base href="/">
+
+    <!-- Load the application shell -->
+    <script>
+      document.addEventListener('WebComponentsReady', function componentsReady() {
+        document.removeEventListener('WebComponentsReady', componentsReady, false);
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = './bundle.js';
+        script.setAttribute('nomodule', true);
+        var scriptModule = document.createElement('script');
+        scriptModule.async = true;
+        scriptModule.src = './module.bundle.js';
+        scriptModule.setAttribute('type', 'module');
+        var refScript = document.body.getElementsByTagName('script')[0];
+        refScript.parentNode.insertBefore(script, refScript);
+        refScript.parentNode.insertBefore(scriptModule, refScript);
+      }, false);
+    </script>
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <p3-sandbox-app></p3-sandbox-app>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
+    <script src="./vendor/custom-elements-es5-adapter.js" async></script>
+    <script src="./vendor/webcomponents-loader.js" async></script>
+  </body>
+</html>
