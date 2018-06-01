@@ -40,7 +40,7 @@ class P3SandboxApp extends PolymerElement {
         <!-- Drawer content -->
         <app-drawer slot="drawer">
           <app-toolbar>Menu</app-toolbar>
-          <iron-selector selected="[[route.pathname]]" attr-for-selected="href" class="drawer-list" role="navigation">
+          <iron-selector attr-for-selected="href" class="drawer-list" role="navigation">
             <a href="/employee-list">Employee list</a>
             <a href="/employee-new">New employee</a>
           </iron-selector>
@@ -63,12 +63,6 @@ class P3SandboxApp extends PolymerElement {
 
   static get is() {
     return 'p3-sandbox-app';
-  }
-
-  static get properties() {
-    return {
-      route: Object,
-    };
   }
 
   ready() {
