@@ -52,6 +52,6 @@
     "dev:nomodule": "webpack-dev-server --inline",
     "dev": "webpack-dev-server --env.BROWSERS=module --inline",
     "lint": "eslint src/**.js",
-    "start": "ws --directory dist --spa index.html --https"
+    "start": "ws --directory dist --spa index.html"
   }
 }

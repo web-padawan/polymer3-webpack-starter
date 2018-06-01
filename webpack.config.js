@@ -32,19 +32,19 @@ const copyStatics = {
     flatten: true
   }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-ce.js'),
-    to: join(OUTPUT_PATH, 'vendor/bundles'),
+    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
   }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd.js'),
-    to: join(OUTPUT_PATH, 'vendor/bundles'),
+    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
   }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js'),
-    to: join(OUTPUT_PATH, 'vendor/bundles'),
+    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
   }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js'),
-    to: join(OUTPUT_PATH, 'vendor/bundles'),
+    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
   }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'),
@@ -56,7 +56,7 @@ const copyStatics = {
     to: OUTPUT_PATH,
     flatten: true
   }, {
-    from: resolve('./favicon.ico'),
+    from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH,
     flatten: true
   }, {
