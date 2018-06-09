@@ -2,14 +2,12 @@
 
 const {resolve, join} = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('./package.json');
 
-const moduleConf = require('./webpack-module.config');
-const nomoduleConf = require('./webpack-nomodule.config');
-
-const ENV = process.argv.find(arg => arg.includes('NODE_ENV=production')) ? 'production' : 'development';
+const ENV = process.argv.find(arg => arg.includes('mode=production')) ? 'production' : 'development';
 const IS_DEV_SERVER = process.argv.find(arg => arg.includes('webpack-dev-server'));
 const OUTPUT_PATH = IS_DEV_SERVER ? resolve('src') : resolve('dist');
 
@@ -23,6 +21,10 @@ const processEnv = {
  */
 const copyStatics = {
   copyWebcomponents: [{
+    from: resolve('./node_modules/polymer-build/lib/babel-helpers-full.min.js'),
+    to: join(OUTPUT_PATH, 'vendor'),
+    flatten: true
+  }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js'),
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
@@ -52,10 +54,6 @@ const copyStatics = {
     flatten: true
   }],
   copyOthers: [{
-    from: resolve('./src/index.html'),
-    to: OUTPUT_PATH,
-    flatten: true
-  }, {
     from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH,
     flatten: true
@@ -69,39 +67,78 @@ const copyStatics = {
 /**
  * Plugin configuration
  */
-const plugins = [IS_DEV_SERVER ?
+let plugins = IS_DEV_SERVER ? [] : [new CleanWebpackPlugin([OUTPUT_PATH], {verbose: true})];
+
+plugins = plugins.concat([IS_DEV_SERVER ?
   new CopyWebpackPlugin(copyStatics.copyWebcomponents) :
   new CopyWebpackPlugin(
     [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
   )
-].concat([
-  new webpack.DefinePlugin({'process.env': processEnv})
+]).concat([
+  new webpack.DefinePlugin({'process.env': processEnv}),
+  new HtmlWebpackPlugin({
+    template: resolve('./src/index.html')
+  })
 ]);
 
-const shared = env => {
-  const IS_MODULE_BUILD = env.BROWSERS === 'module';
-
-  return {
-    entry: './src/index.js',
-    devtool: 'cheap-module-source-map',
-    output: {
-      path: OUTPUT_PATH,
-      filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js',
-      chunkFilename: '[name].[chunkHash].js'
+module.exports = {
+  entry: './src/index.js',
+  devtool: 'cheap-module-source-map',
+  output: {
+    path: OUTPUT_PATH,
+    filename: '[name].[chunkhash:8].js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|mjs)$/,
+        // We need to transpile Polymer, do not exclude node_modules
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              require('@babel/plugin-external-helpers'),
+              require('@babel/plugin-syntax-dynamic-import'),
+              require('@babel/plugin-transform-classes'),
+              require('@babel/plugin-syntax-object-rest-spread'),
+              require('@babel/plugin-transform-arrow-functions'),
+              require('@babel/plugin-transform-async-to-generator'),
+              require('@babel/plugin-transform-block-scoped-functions'),
+              require('@babel/plugin-transform-block-scoping'),
+              require('@babel/plugin-transform-computed-properties'),
+              require('@babel/plugin-transform-destructuring'),
+              require('@babel/plugin-transform-duplicate-keys'),
+              require('@babel/plugin-transform-exponentiation-operator'),
+              require('@babel/plugin-transform-for-of'),
+              require('@babel/plugin-transform-function-name'),
+              require('@babel/plugin-transform-instanceof'),
+              require('@babel/plugin-transform-literals'),
+              require('@babel/plugin-transform-modules-amd'),
+              require('@babel/plugin-transform-object-super'),
+              require('@babel/plugin-transform-parameters'),
+              require('@babel/plugin-transform-regenerator'),
+              require('@babel/plugin-transform-shorthand-properties'),
+              require('@babel/plugin-transform-spread'),
+              require('@babel/plugin-transform-sticky-regex'),
+              require('@babel/plugin-transform-template-literals'),
+              require('@babel/plugin-transform-typeof-symbol')
+            ]
+          }
+        }
+      }
+    ]
+  },
+  plugins,
+  devServer: {
+    contentBase: OUTPUT_PATH,
+    compress: true,
+    overlay: {
+      errors: true
     },
-    plugins,
-    devServer: {
-      contentBase: OUTPUT_PATH,
-      compress: true,
-      overlay: {
-        errors: true
-      },
-      port: 3000,
-      host: '0.0.0.0',
-      historyApiFallback: true,
-      disableHostCheck: true
-    }
-  };
+    port: 3000,
+    host: '127.0.0.1',
+    historyApiFallback: true,
+    disableHostCheck: true
+  }
 };
 
-module.exports = (env = {}) => merge(env.BROWSERS === 'module' ? moduleConf() : nomoduleConf(), shared(env));
