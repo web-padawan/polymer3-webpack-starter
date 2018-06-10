@@ -23,17 +23,34 @@
     "@babel/transform-shorthand-properties",
     "@babel/transform-spread",
     "@babel/transform-sticky-regex",
-    "@babel/transform-template-literals",
     "@babel/transform-typeof-symbol",
     "@babel/transform-unicode-regex"
   ],
   "env": {
+    "development": {
+      "plugins": [
+        "@babel/transform-template-literals"
+      ]
+    },
     "production": {
       "presets": [["minify", {
         "evaluate": false,
         "mangle": false,
         "simplify": false
-      }]]
+      }]],
+      "plugins": [
+        ["template-html-minifier", {
+          "modules": {
+            "@polymer/polymer/lib/utils/html-tag.js": ["html"]
+          },
+          "htmlMinifier": {
+            "collapseWhitespace": true,
+            "minifyCSS": true,
+            "removeComments": true
+          }
+        }],
+        "@babel/transform-template-literals"
+      ]
     }
   }
 }
