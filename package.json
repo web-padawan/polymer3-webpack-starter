@@ -62,7 +62,7 @@
     "@babel/plugin-transform-template-literals": "=7.0.0-beta.49",
     "@babel/plugin-transform-typeof-symbol": "=7.0.0-beta.49",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "=8.0.0-beta.2",
+    "babel-loader": "=8.0.0-beta.3",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
     "eslint": "^4.13.0",
