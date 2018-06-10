@@ -25,27 +25,11 @@ const copyStatics = {
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
   }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js'),
+    from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-*.js'),
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
   }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js'),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-ce.js'),
-    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
-    flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd.js'),
-    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
-    flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js'),
-    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
-    flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js'),
+    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/*.js'),
     to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
   }, {
@@ -136,9 +120,8 @@ module.exports = {
       errors: true
     },
     port: 3000,
-    host: '127.0.0.1',
-    historyApiFallback: true,
-    disableHostCheck: true
+    host: '0.0.0.0',
+    historyApiFallback: true
   }
 };
 
