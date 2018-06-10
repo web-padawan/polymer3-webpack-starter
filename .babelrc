@@ -26,5 +26,14 @@
     "@babel/transform-template-literals",
     "@babel/transform-typeof-symbol",
     "@babel/transform-unicode-regex"
-  ]
+  ],
+  "env": {
+    "production": {
+      "presets": [["minify", {
+        "evaluate": false,
+        "mangle": false,
+        "simplify": false
+      }]]
+    }
+  }
 }

@@ -62,7 +62,8 @@ const commonConfig = merge([
               options: {
                 babelrc: true,
                 extends: join(__dirname + '/.babelrc'),
-                cacheDirectory: true
+                cacheDirectory: true,
+                envName: ENV
               }
             },
             {
