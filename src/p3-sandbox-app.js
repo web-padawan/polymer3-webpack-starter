@@ -5,7 +5,10 @@ import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-header-layout/app-header-layout.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import '@polymer/iron-selector/iron-selector.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-item/vaadin-item.js';
+import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '@vaadin/vaadin-lumo-styles/icons.js';
 import {Router} from '@vaadin/router/dist/vaadin-router.js';
 import './shared-styles.js';
 
@@ -18,39 +21,48 @@ class P3SandboxApp extends PolymerElement {
         }
         app-header {
           color: var(--lumo-base-color);
-          background-color: var(--lumo-primary-color);
+          background: var(--lumo-primary-color);
         }
-        .drawer-list {
-          margin: var(--lumo-space-tall-m);
+        vaadin-button {
+          margin-right: var(--lumo-space-m);
+          background: var(--lumo-tint);
         }
-        .drawer-list a {
+        vaadin-item {
+          padding: 0;
+        }
+        a {
           display: block;
-          padding: 0 var(--lumo-space-m);
-          color: var(--lumo-secondary-text-color);
-          line-height: var(--lumo-size-m);
-          text-decoration: none;
+          color: inherit;
+          outline: none;
+          line-height: 36px;
         }
-        .drawer-list a.iron-selected {
-          color: var(--lumo-body-text-color);
-          font-weight: bold;
+        a:hover {
+          text-decoration: none;
         }
       </style>
 
-      <app-drawer-layout fullbleed>
+      <app-drawer-layout fullbleed narrow="{{narrow}}">
         <!-- Drawer content -->
-        <app-drawer slot="drawer">
+        <app-drawer slot="drawer" swipe-open="[[narrow]]">
           <app-toolbar>Menu</app-toolbar>
-          <iron-selector attr-for-selected="href" class="drawer-list" role="navigation">
-            <a href="/employee-list">Employee list</a>
-            <a href="/employee-new">New employee</a>
-          </iron-selector>
+          <vaadin-list-box selected="{{selected}}">
+            <vaadin-item>
+              <a href="/employee-list">Employee list</a>
+            </vaadin-item>
+            <vaadin-item>
+              <a href="/employee-new">New employee</a>
+            </vaadin-item>
+          </vaadin-list-box>
         </app-drawer>
 
         <!-- Main content -->
         <app-header-layout>
           <app-header slot="header">
             <app-toolbar>
-              <div main-title>p3-dev-app</div>
+              <vaadin-button theme="icon" hidden$="[[!narrow]]" aria-label="Toggle menu" drawer-toggle>
+                <iron-icon icon="lumo:menu"></iron-icon>
+              </vaadin-button>
+              <div main-title>Vaadin App</div>
             </app-toolbar>
           </app-header>
           <main>
@@ -63,6 +75,12 @@ class P3SandboxApp extends PolymerElement {
 
   static get is() {
     return 'p3-sandbox-app';
+  }
+
+  static get properties() {
+    return {
+      selected: Number
+    };
   }
 
   ready() {
@@ -79,6 +97,7 @@ class P3SandboxApp extends PolymerElement {
         action: context => new Promise(resolve => {
           import(/* webpackChunkName: "employee-list" */ './employee-list.js')
             .then(() => {
+              this.selected = 0;
               resolve(context.component('employee-list'));
             });
         })
@@ -88,6 +107,7 @@ class P3SandboxApp extends PolymerElement {
         action: context => new Promise(resolve => {
           import(/* webpackChunkName: "employee-new" */ './employee-new.js')
             .then(() => {
+              this.selected = 1;
               resolve(context.component('employee-new'));
             });
         })
@@ -97,6 +117,7 @@ class P3SandboxApp extends PolymerElement {
         action: context => new Promise(resolve => {
           import(/* webpackChunkName: "404" */ './404.js')
             .then(() => {
+              this.selected = null;
               resolve(context.component('app-404'));
             });
         })
@@ -105,4 +126,4 @@ class P3SandboxApp extends PolymerElement {
   }
 }
 
-window.customElements.define(P3SandboxApp.is, P3SandboxApp);
+customElements.define(P3SandboxApp.is, P3SandboxApp);
