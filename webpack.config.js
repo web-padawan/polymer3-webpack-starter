@@ -21,10 +21,6 @@ const processEnv = {
  */
 const copyStatics = {
   copyWebcomponents: [{
-    from: resolve('./node_modules/polymer-build/lib/babel-helpers-full.min.js'),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
-  }, {
     from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-*.js'),
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
@@ -38,13 +34,14 @@ const copyStatics = {
     flatten: true
   }],
   copyOthers: [{
+    from: resolve('./src/vendor/babel-helpers.min.js'),
+    to: join(OUTPUT_PATH, 'vendor')
+  }, {
     from: resolve('./src/favicon.ico'),
-    to: OUTPUT_PATH,
-    flatten: true
+    to: OUTPUT_PATH
   }, {
     from: resolve('./src/employees.json'),
-    to: OUTPUT_PATH,
-    flatten: true
+    to: OUTPUT_PATH
   }]
 };
 
@@ -77,38 +74,44 @@ module.exports = {
       {
         test: /\.(js|mjs)$/,
         // We need to transpile Polymer, do not exclude node_modules
-        use: {
-          loader: 'babel-loader',
-          options: {
-            plugins: [
-              require('@babel/plugin-external-helpers'),
-              require('@babel/plugin-syntax-dynamic-import'),
-              require('@babel/plugin-transform-classes'),
-              require('@babel/plugin-syntax-object-rest-spread'),
-              require('@babel/plugin-transform-arrow-functions'),
-              require('@babel/plugin-transform-async-to-generator'),
-              require('@babel/plugin-transform-block-scoped-functions'),
-              require('@babel/plugin-transform-block-scoping'),
-              require('@babel/plugin-transform-computed-properties'),
-              require('@babel/plugin-transform-destructuring'),
-              require('@babel/plugin-transform-duplicate-keys'),
-              require('@babel/plugin-transform-exponentiation-operator'),
-              require('@babel/plugin-transform-for-of'),
-              require('@babel/plugin-transform-function-name'),
-              require('@babel/plugin-transform-instanceof'),
-              require('@babel/plugin-transform-literals'),
-              require('@babel/plugin-transform-modules-amd'),
-              require('@babel/plugin-transform-object-super'),
-              require('@babel/plugin-transform-parameters'),
-              require('@babel/plugin-transform-regenerator'),
-              require('@babel/plugin-transform-shorthand-properties'),
-              require('@babel/plugin-transform-spread'),
-              require('@babel/plugin-transform-sticky-regex'),
-              require('@babel/plugin-transform-template-literals'),
-              require('@babel/plugin-transform-typeof-symbol')
-            ]
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                require('@babel/plugin-external-helpers'),
+                require('@babel/plugin-syntax-dynamic-import'),
+                require('@babel/plugin-transform-classes'),
+                require('@babel/plugin-syntax-object-rest-spread'),
+                require('@babel/plugin-transform-arrow-functions'),
+                require('@babel/plugin-transform-async-to-generator'),
+                require('@babel/plugin-transform-block-scoped-functions'),
+                require('@babel/plugin-transform-block-scoping'),
+                require('@babel/plugin-transform-computed-properties'),
+                require('@babel/plugin-transform-destructuring'),
+                require('@babel/plugin-transform-duplicate-keys'),
+                require('@babel/plugin-transform-exponentiation-operator'),
+                require('@babel/plugin-transform-for-of'),
+                require('@babel/plugin-transform-function-name'),
+                require('@babel/plugin-transform-instanceof'),
+                require('@babel/plugin-transform-literals'),
+                require('@babel/plugin-transform-modules-amd'),
+                require('@babel/plugin-transform-object-super'),
+                require('@babel/plugin-transform-parameters'),
+                require('@babel/plugin-transform-regenerator'),
+                require('@babel/plugin-transform-shorthand-properties'),
+                require('@babel/plugin-transform-spread'),
+                require('@babel/plugin-transform-sticky-regex'),
+                require('@babel/plugin-transform-template-literals'),
+                require('@babel/plugin-transform-typeof-symbol'),
+                require('@babel/plugin-transform-unicode-regex')
+              ]
+            }
+          },
+          {
+            loader: 'uglify-template-string-loader'
           }
-        }
+        ]
       }
     ]
   },
@@ -124,4 +127,3 @@ module.exports = {
     historyApiFallback: true
   }
 };
-
