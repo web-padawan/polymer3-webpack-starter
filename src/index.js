@@ -2,5 +2,4 @@
 
 /* Import WebpackApp */
 
-/* eslint-disable no-unused-vars */
-import './p3-sandbox-app';
+import './starter-app';

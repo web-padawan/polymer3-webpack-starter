@@ -12,7 +12,7 @@ import '@vaadin/vaadin-lumo-styles/icons.js';
 import {Router} from '@vaadin/router/dist/vaadin-router.js';
 import './shared-styles.js';
 
-class P3SandboxApp extends PolymerElement {
+class StarterApp extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
@@ -74,7 +74,7 @@ class P3SandboxApp extends PolymerElement {
   }
 
   static get is() {
-    return 'p3-sandbox-app';
+    return 'starter-app';
   }
 
   static get properties() {
@@ -126,4 +126,4 @@ class P3SandboxApp extends PolymerElement {
   }
 }
 
-customElements.define(P3SandboxApp.is, P3SandboxApp);
+customElements.define(StarterApp.is, StarterApp);
