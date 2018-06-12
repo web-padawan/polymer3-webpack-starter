@@ -1,5 +1,8 @@
 {
-  "extends": "vaadin",
+  "extends": [
+    "vaadin",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "node": true,
