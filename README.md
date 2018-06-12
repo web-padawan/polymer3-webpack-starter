@@ -9,7 +9,7 @@ a module bundler. The optimizations like code splitting, minifying JavaScript an
 
 Note: the `Vaadin.Router` is on the road to stable release, but the current version is not
 yet production ready, and the API may change. The ES modules versions of Vaadin components, built
-using Polymer 3, are currently also in the preview, but we are working on them. Stay tuned!
+using Polymer 3, are also in the preview. Stay tuned!
 
 ## Install dependencies
 
