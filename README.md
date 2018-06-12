@@ -1,4 +1,4 @@
-# Polymer 3 Webpack Sandbox
+# Polymer 3 Webpack Starter
 
 This is an example project demonstrating how you can build a frontend part of the JavaScript
 application using [Vaadin components](https://vaadin.com/components) and [Vaadin.Router](https://github.com/vaadin/vaadin-router) library, and leverage the benefits of the modern tools.
