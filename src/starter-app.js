@@ -9,7 +9,7 @@ import '@vaadin/vaadin-button/vaadin-button.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
-import {Router} from '@vaadin/router/dist/vaadin-router.js';
+import {Router} from '@vaadin/router';
 import './shared-styles.js';
 
 class StarterApp extends PolymerElement {
