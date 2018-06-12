@@ -25,11 +25,18 @@ const polyfills = [
   }
 ];
 
-const assets = [
+const helpers = [
   {
     from: resolve('./src/vendor/babel-helpers.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
   }, {
+    from: resolve('./src/vendor/regenerator-runtime.min.js'),
+    to: join(OUTPUT_PATH, 'vendor')
+  },
+];
+
+const assets = [
+  {
     from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH
   }, {
@@ -96,7 +103,7 @@ const productionConfig = merge([
   {
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], {verbose: true}),
-      new CopyWebpackPlugin([...polyfills, ...assets])
+      new CopyWebpackPlugin([...polyfills, ...helpers, ...assets])
     ]
   }
 ]);
