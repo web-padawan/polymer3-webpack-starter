@@ -1,5 +1,12 @@
 # Polymer 3 Webpack Sandbox
 
+This is an example project demonstrating how you can build a modern JavaScript application
+using [Vaadin components](https://vaadin.com/components) and [Vaadin.Router](https://github.com/vaadin/vaadin-router) library.
+
+The application uses ES modules for development, and [Webpack](https://webpack.js.org) as
+a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
+(inside of the template string literals) are applied to reduce production bundle size.
+
 ## Install dependencies
 
 ```sh
