@@ -1,11 +1,17 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@polymer/iron-ajax/iron-ajax.js';
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
 import '@vaadin/vaadin-grid/vaadin-grid.js';
 import '@vaadin/vaadin-grid/vaadin-grid-filter.js';
 import './shared-styles.js';
 
+/**
+ * Employee list view.
+ *
+ * @class EmployeeList
+ * @extends {PolymerElement}
+ */
 class EmployeeList extends PolymerElement {
   static get template() {
     return html`

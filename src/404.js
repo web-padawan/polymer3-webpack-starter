@@ -1,6 +1,13 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import './shared-styles.js';
+
+/**
+ * 404 view.
+ *
+ * @class App404
+ * @extends {PolymerElement}
+ */
 class App404 extends PolymerElement {
   static get template() {
     return html`

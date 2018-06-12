@@ -1,5 +1,5 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
 import '@polymer/app-layout/app-header/app-header.js';
@@ -9,9 +9,15 @@ import '@vaadin/vaadin-button/vaadin-button.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
-import {Router} from '@vaadin/router';
+import { Router } from '@vaadin/router';
 import './shared-styles.js';
 
+/**
+ * Starter application shell.
+ *
+ * @class StarterApp
+ * @extends {PolymerElement}
+ */
 class StarterApp extends PolymerElement {
   static get template() {
     return html`
@@ -94,34 +100,38 @@ class StarterApp extends PolymerElement {
       },
       {
         path: '/employee-list',
-        action: context => new Promise(resolve => {
-          import(/* webpackChunkName: "employee-list" */ './employee-list.js')
-            .then(() => {
-              this.selected = 0;
-              resolve(context.component('employee-list'));
-            });
-        })
+        action: context =>
+          new Promise(resolve => {
+            import(/* webpackChunkName: "employee-list" */ './employee-list.js').then(
+              () => {
+                this.selected = 0;
+                resolve(context.component('employee-list'));
+              }
+            );
+          })
       },
       {
         path: '/employee-new',
-        action: context => new Promise(resolve => {
-          import(/* webpackChunkName: "employee-new" */ './employee-new.js')
-            .then(() => {
-              this.selected = 1;
-              resolve(context.component('employee-new'));
-            });
-        })
+        action: context =>
+          new Promise(resolve => {
+            import(/* webpackChunkName: "employee-new" */ './employee-new.js').then(
+              () => {
+                this.selected = 1;
+                resolve(context.component('employee-new'));
+              }
+            );
+          })
       },
       {
         path: '(.*)+',
-        action: context => new Promise(resolve => {
-          import(/* webpackChunkName: "404" */ './404.js')
-            .then(() => {
+        action: context =>
+          new Promise(resolve => {
+            import(/* webpackChunkName: "404" */ './404.js').then(() => {
               this.selected = null;
               resolve(context.component('app-404'));
             });
-        })
-      },
+          })
+      }
     ]);
   }
 }

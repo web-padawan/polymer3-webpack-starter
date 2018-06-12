@@ -1,5 +1,5 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@polymer/iron-form/iron-form.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
 import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
@@ -19,6 +19,12 @@ import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
 import './shared-styles.js';
 
+/**
+ * New employee view.
+ *
+ * @class EmployeeNew
+ * @extends {PolymerElement}
+ */
 class EmployeeNew extends PolymerElement {
   static get template() {
     return html`
@@ -148,14 +154,13 @@ class EmployeeNew extends PolymerElement {
     return {
       dietarys: {
         type: Array,
-        value: () =>
-          [
-            'Ovo-Vegetarian',
-            'Lacto-Vegetarian',
-            'Lacto-Ovo Vegetarians',
-            'Pescetarians',
-            'Other'
-          ]
+        value: () => [
+          'Ovo-Vegetarian',
+          'Lacto-Vegetarian',
+          'Lacto-Ovo Vegetarians',
+          'Pescetarians',
+          'Other'
+        ]
       },
       dialogOpen: Boolean,
       formSubmittedOpen: Boolean,
