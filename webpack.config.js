@@ -1,25 +1,31 @@
 'use strict';
 
-const {resolve, join} = require('path');
+const { resolve, join } = require('path');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const ENV = process.argv.find(arg => arg.includes('production')) ? 'production' : 'development';
+const ENV = process.argv.find(arg => arg.includes('production'))
+  ? 'production'
+  : 'development';
 const OUTPUT_PATH = ENV === 'production' ? resolve('dist') : resolve('src');
+
+const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
 
 const polyfills = [
   {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/webcomponents-*.js'),
+    from: resolve(`${webcomponentsjs}/webcomponents-*.js`),
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/bundles/*.js'),
+  },
+  {
+    from: resolve(`${webcomponentsjs}/bundles/*.js`),
     to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
-  }, {
-    from: resolve('./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'),
+  },
+  {
+    from: resolve(`${webcomponentsjs}/custom-elements-es5-adapter.js`),
     to: join(OUTPUT_PATH, 'vendor'),
     flatten: true
   }
@@ -29,17 +35,19 @@ const helpers = [
   {
     from: resolve('./src/vendor/babel-helpers.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
-  }, {
+  },
+  {
     from: resolve('./src/vendor/regenerator-runtime.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
-  },
+  }
 ];
 
 const assets = [
   {
     from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH
-  }, {
+  },
+  {
     from: resolve('./src/employees.json'),
     to: OUTPUT_PATH
   }
@@ -61,7 +69,7 @@ const commonConfig = merge([
     module: {
       rules: [
         {
-          test: /\.(js|mjs)$/,
+          test: /\.js$/,
           // We need to transpile Polymer, do not exclude node_modules
           use: [
             {
@@ -80,14 +88,12 @@ const commonConfig = merge([
         }
       ]
     }
-  },
+  }
 ]);
 
 const developmentConfig = merge([
   {
-    plugins: [
-      new CopyWebpackPlugin(polyfills)
-    ],
+    plugins: [new CopyWebpackPlugin(polyfills)],
     devServer: {
       contentBase: OUTPUT_PATH,
       compress: true,
@@ -102,7 +108,7 @@ const developmentConfig = merge([
 const productionConfig = merge([
   {
     plugins: [
-      new CleanWebpackPlugin([OUTPUT_PATH], {verbose: true}),
+      new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets])
     ]
   }
@@ -110,8 +116,8 @@ const productionConfig = merge([
 
 module.exports = mode => {
   if (mode === 'production') {
-    return merge(commonConfig, productionConfig, {mode});
+    return merge(commonConfig, productionConfig, { mode });
   }
 
-  return merge(commonConfig, developmentConfig, {mode});
+  return merge(commonConfig, developmentConfig, { mode });
 };
