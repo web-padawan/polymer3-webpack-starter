@@ -100,37 +100,30 @@ class StarterApp extends PolymerElement {
       },
       {
         path: '/employee-list',
-        action: context =>
-          new Promise(resolve => {
-            import(/* webpackChunkName: "employee-list" */ './employee-list.js').then(
-              () => {
-                this.selected = 0;
-                resolve(context.component('employee-list'));
-              }
-            );
-          })
+        component: 'employee-list',
+        action: () => {
+          import(/* webpackChunkName: "list" */ './employee-list').then(() => {
+            this.selected = 0;
+          });
+        }
       },
       {
         path: '/employee-new',
-        action: context =>
-          new Promise(resolve => {
-            import(/* webpackChunkName: "employee-new" */ './employee-new.js').then(
-              () => {
-                this.selected = 1;
-                resolve(context.component('employee-new'));
-              }
-            );
-          })
+        component: 'employee-new',
+        action: () => {
+          import(/* webpackChunkName: "new" */ './employee-new').then(() => {
+            this.selected = 1;
+          });
+        }
       },
       {
         path: '(.*)+',
-        action: context =>
-          new Promise(resolve => {
-            import(/* webpackChunkName: "404" */ './404.js').then(() => {
-              this.selected = null;
-              resolve(context.component('app-404'));
-            });
-          })
+        component: 'app-404',
+        action: () => {
+          import(/* webpackChunkName: "404" */ './404').then(() => {
+            this.selected = null;
+          });
+        }
       }
     ]);
   }
