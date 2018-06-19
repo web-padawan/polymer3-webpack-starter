@@ -33,7 +33,10 @@
     "@vaadin/vaadin-tabs": "^2.0.0-pre.3",
     "@vaadin/vaadin-text-field": "^2.0.1-pre.2",
     "@vaadin/vaadin-upload": "^4.0.0-pre.3",
-    "@webcomponents/webcomponentsjs": "^2.0.2"
+    "@webcomponents/webcomponentsjs": "^2.0.2",
+    "connect-history-api-fallback": "^1.5.0",
+    "express": "^4.16.3",
+    "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "@babel/core": "=7.0.0-beta.51",
@@ -80,7 +83,6 @@
     "html-webpack-plugin": "^4.0.0-alpha",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
-    "local-web-server": "^2.5.1",
     "prettier": "^1.13.5",
     "regenerator-runtime": "^0.11.1",
     "uglify-template-string-loader": "^1.1.0",
@@ -102,6 +104,6 @@
     "precommit": "lint-staged",
     "lint": "eslint src/**.js",
     "postinstall": "node utils/generate-helpers.js",
-    "start": "ws --directory dist --spa index.html"
+    "start": "node server.js"
   }
 }
