@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/web-padawan/polymer3-webpack-starter/badge.svg)](https://snyk.io/test/github/web-padawan/polymer3-webpack-starter)
+
 # Polymer 3 Webpack Starter
 
 This is an example project demonstrating how you can build a frontend part of the JavaScript
