@@ -5,6 +5,7 @@ const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
@@ -109,7 +110,8 @@ const productionConfig = merge([
   {
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
-      new CopyWebpackPlugin([...polyfills, ...helpers, ...assets])
+      new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
+      new CompressionPlugin({ test: /\.js/ })
     ]
   }
 ]);

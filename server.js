@@ -1,5 +1,5 @@
 const express = require('express');
-const serveStatic = require('serve-static');
+const serveStatic = require('express-static-gzip');
 const history = require('connect-history-api-fallback');
 const port = process.env.PORT || 8000;
 
