@@ -24,6 +24,17 @@ This program is available under Apache License Version 2.0, available at https:/
 
     <script src="./vendor/webcomponents-loader.js"></script>
 
+    <script>
+      // Load and register pre-caching Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('sw.js', {
+            scope: '/',
+          });
+        });
+      }
+    </script>
+
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {

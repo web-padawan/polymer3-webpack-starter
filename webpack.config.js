@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
@@ -111,6 +112,11 @@ const productionConfig = merge([
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
+      new InjectManifest({
+        swSrc: resolve('src', 'service-worker.js'),
+        swDest: resolve(OUTPUT_PATH, 'sw.js'),
+        exclude: [/webcomponents-(?!loader).*\.js$/]
+      }),
       new CompressionPlugin({ test: /\.js/ })
     ]
   }
