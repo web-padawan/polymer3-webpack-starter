@@ -12,6 +12,7 @@ workbox.skipWaiting();
 workbox.clientsClaim();
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
+workbox.routing.registerNavigationRoute('/index.html');
 workbox.routing.registerRoute(
   /\/vendor\/.*(?!loader).*\.js$/,
   workbox.strategies.staleWhileRevalidate(),

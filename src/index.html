@@ -56,10 +56,8 @@ This program is available under Apache License Version 2.0, available at https:/
     <script>
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('sw.js', {
-            scope: '/',
-          });
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('sw.js');
         });
       }
     </script>
