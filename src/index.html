@@ -48,11 +48,6 @@ This program is available under Apache License Version 2.0, available at https:/
     <script src="./vendor/custom-elements-es5-adapter.js"></script>
     <!-- DO NOT REMOVE THIS COMMENT, WE NEED ITS CLOSING MARKER -->
 
-    <script src="./vendor/babel-helpers.min.js"></script>
-    <script src="./vendor/regenerator-runtime.min.js"></script>
-
-    <script src="./vendor/webcomponents-loader.js"></script>
-
     <script>
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
@@ -76,5 +71,10 @@ This program is available under Apache License Version 2.0, available at https:/
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
+    <!-- Load the external helpers to run the code transpiled to ES5 -->
+    <script src="./vendor/babel-helpers.min.js"></script>
+    <script src="./vendor/regenerator-runtime.min.js"></script>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="./vendor/webcomponents-loader.js"></script>
   </body>
 </html>
