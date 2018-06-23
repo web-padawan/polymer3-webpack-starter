@@ -9,8 +9,8 @@ import '@vaadin/vaadin-button/vaadin-button.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
-import { Router } from '@vaadin/router';
 import '../styles/shared-styles.js';
+import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/pages';
 
 /**
  * Starter application shell.
@@ -92,44 +92,28 @@ class StarterApp extends PolymerElement {
   ready() {
     super.ready();
 
-    const router = new Router(this.shadowRoot.querySelector('main'));
-    router.setRoutes([
-      {
-        path: '/',
-        redirect: '/employee-list'
-      },
-      {
-        path: '/employee-list',
-        component: 'employee-list',
-        action: () => {
-          import(/* webpackChunkName: "list" */ '../views/employee-list').then(
-            () => {
-              this.selected = 0;
-            }
-          );
-        }
-      },
-      {
-        path: '/employee-new',
-        component: 'employee-new',
-        action: () => {
-          import(/* webpackChunkName: "new" */ '../views/employee-new').then(
-            () => {
-              this.selected = 1;
-            }
-          );
-        }
-      },
-      {
-        path: '(.*)+',
-        component: 'app-404',
-        action: () => {
-          import(/* webpackChunkName: "404" */ '../views/404').then(() => {
-            this.selected = null;
-          });
-        }
-      }
-    ]);
+    window.addEventListener(
+      'vaadin-router-route-changed',
+      this.__onRouteChanged.bind(this)
+    );
+
+    import(/* webpackChunkName: "router" */ '../routes/config').then(config => {
+      const setupRouter = config.default;
+      setupRouter(this.shadowRoot.querySelector('main'));
+    });
+  }
+
+  __onRouteChanged(e) {
+    switch (e.detail.pathname) {
+      case EMPLOYEE_LIST:
+        this.selected = 0;
+        break;
+      case NEW_EMPLOYEE:
+        this.selected = 1;
+        break;
+      default:
+        this.selected = null;
+    }
   }
 }
 
