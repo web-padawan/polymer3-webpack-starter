@@ -46,6 +46,10 @@ const helpers = [
 
 const assets = [
   {
+    from: resolve('./src/assets'),
+    to: join(OUTPUT_PATH, 'assets')
+  },
+  {
     from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH
   },
