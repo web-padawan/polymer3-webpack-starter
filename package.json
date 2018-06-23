@@ -8,9 +8,10 @@
     "url": "https://github.com/web-padawan/polymer3-webpack-starter.git"
   },
   "dependencies": {
-    "@polymer/app-layout": "^3.0.0-pre.19",
-    "@polymer/iron-ajax": "^3.0.0-pre.19",
-    "@polymer/iron-form": "^3.0.0-pre.19",
+    "@polymer/app-layout": "^3.0.0-pre.21",
+    "@polymer/iron-ajax": "^3.0.0-pre.21",
+    "@polymer/iron-form": "^3.0.0-pre.21",
+    "@polymer/iron-icon": "^3.0.0-pre.21",
     "@polymer/polymer": "^3.0.2",
     "@vaadin/router": "^0.3.0",
     "@vaadin/vaadin-button": "^2.0.0-pre.4",
