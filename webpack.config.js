@@ -66,7 +66,6 @@ const assets = [
 const commonConfig = merge([
   {
     entry: './src/index.js',
-    devtool: 'cheap-module-source-map',
     output: {
       path: OUTPUT_PATH,
       filename: '[name].[chunkhash:8].js'
@@ -103,6 +102,7 @@ const commonConfig = merge([
 
 const developmentConfig = merge([
   {
+    devtool: 'cheap-module-source-map',
     plugins: [new CopyWebpackPlugin(polyfills)],
     devServer: {
       contentBase: OUTPUT_PATH,
@@ -117,6 +117,7 @@ const developmentConfig = merge([
 
 const productionConfig = merge([
   {
+    devtool: 'nosources-source-map',
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
