@@ -105,7 +105,7 @@
     "build": "webpack --env production",
     "dev": "webpack-dev-server --env development",
     "precommit": "lint-staged",
-    "lint": "eslint src/**.js",
+    "lint": "eslint src/app/*.js src/views/*.js src/styles/*.js",
     "postinstall": "node utils/generate-helpers.js && npm run build",
     "start": "node server.js"
   }

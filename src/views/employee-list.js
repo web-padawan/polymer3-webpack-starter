@@ -4,7 +4,7 @@ import '@polymer/iron-ajax/iron-ajax.js';
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
 import '@vaadin/vaadin-grid/vaadin-grid.js';
 import '@vaadin/vaadin-grid/vaadin-grid-filter.js';
-import './shared-styles.js';
+import '../styles/shared-styles.js';
 
 /**
  * Employee list view.

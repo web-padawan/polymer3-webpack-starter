@@ -10,7 +10,7 @@ import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
 import { Router } from '@vaadin/router';
-import './shared-styles.js';
+import '../styles/shared-styles.js';
 
 /**
  * Starter application shell.
@@ -102,25 +102,29 @@ class StarterApp extends PolymerElement {
         path: '/employee-list',
         component: 'employee-list',
         action: () => {
-          import(/* webpackChunkName: "list" */ './employee-list').then(() => {
-            this.selected = 0;
-          });
+          import(/* webpackChunkName: "list" */ '../views/employee-list').then(
+            () => {
+              this.selected = 0;
+            }
+          );
         }
       },
       {
         path: '/employee-new',
         component: 'employee-new',
         action: () => {
-          import(/* webpackChunkName: "new" */ './employee-new').then(() => {
-            this.selected = 1;
-          });
+          import(/* webpackChunkName: "new" */ '../views/employee-new').then(
+            () => {
+              this.selected = 1;
+            }
+          );
         }
       },
       {
         path: '(.*)+',
         component: 'app-404',
         action: () => {
-          import(/* webpackChunkName: "404" */ './404').then(() => {
+          import(/* webpackChunkName: "404" */ '../views/404').then(() => {
             this.selected = null;
           });
         }

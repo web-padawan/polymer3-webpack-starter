@@ -2,4 +2,4 @@
 
 /* Import WebpackApp */
 
-import './starter-app';
+import './app/starter-app';

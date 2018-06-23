@@ -17,7 +17,7 @@ import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
-import './shared-styles.js';
+import '../styles/shared-styles.js';
 
 /**
  * New employee view.
