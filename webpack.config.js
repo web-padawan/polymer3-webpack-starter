@@ -52,6 +52,10 @@ const assets = [
   {
     from: resolve('./src/employees.json'),
     to: OUTPUT_PATH
+  },
+  {
+    from: resolve('./src/manifest.json'),
+    to: OUTPUT_PATH
   }
 ];
 
@@ -117,7 +121,7 @@ const productionConfig = merge([
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
         exclude: [/webcomponents-(?!loader).*\.js$/]
       }),
-      new CompressionPlugin({ test: /\.js/ })
+      new CompressionPlugin({ test: /\.js$/ })
     ]
   }
 ]);
