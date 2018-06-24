@@ -1,6 +1,7 @@
 {
   "name": "Polymer 3 Webpack App",
-  "short_name": "demo project built with Vaadin components and Vaadin.Router library",
+  "short_name": "Vaadin App",
+  "description": "demo project built with Vaadin components and Vaadin.Router library",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#1576f3",
