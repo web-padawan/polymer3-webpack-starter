@@ -69,7 +69,9 @@ class StarterApp extends PolymerElement {
               <vaadin-button theme="icon" hidden$="[[!narrow]]" aria-label="Toggle menu" drawer-toggle>
                 <iron-icon icon="lumo:menu"></iron-icon>
               </vaadin-button>
-              <div main-title>Vaadin App</div>
+              <div main-title>
+                <slot></slot>
+              </div>
             </app-toolbar>
           </app-header>
           <main>
@@ -99,6 +101,8 @@ class StarterApp extends PolymerElement {
 
   ready() {
     super.ready();
+
+    this.removeAttribute('unresolved');
 
     window.addEventListener(
       'vaadin-router-route-changed',
