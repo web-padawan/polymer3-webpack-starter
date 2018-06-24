@@ -12,6 +12,7 @@ const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
   : 'development';
 const OUTPUT_PATH = ENV === 'production' ? resolve('dist') : resolve('src');
+const INDEX_TEMPLATE = resolve('./src/index.html');
 
 const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
 
@@ -70,11 +71,6 @@ const commonConfig = merge([
       path: OUTPUT_PATH,
       filename: '[name].[chunkhash:8].js'
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: resolve('./src/index.html')
-      })
-    ],
     module: {
       rules: [
         {
@@ -103,7 +99,12 @@ const commonConfig = merge([
 const developmentConfig = merge([
   {
     devtool: 'cheap-module-source-map',
-    plugins: [new CopyWebpackPlugin(polyfills)],
+    plugins: [
+      new CopyWebpackPlugin(polyfills),
+      new HtmlWebpackPlugin({
+        template: INDEX_TEMPLATE
+      })
+    ],
     devServer: {
       contentBase: OUTPUT_PATH,
       compress: true,
@@ -121,6 +122,15 @@ const productionConfig = merge([
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
+      new HtmlWebpackPlugin({
+        template: INDEX_TEMPLATE,
+        minify: {
+          collapseWhitespace: true,
+          removeComments: true,
+          minifyCSS: true,
+          minifyJS: true
+        }
+      }),
       new InjectManifest({
         swSrc: resolve('src', 'service-worker.js'),
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
