@@ -1,5 +1,6 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
 import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
 import '@polymer/app-layout/app-header/app-header.js';
@@ -87,6 +88,13 @@ class StarterApp extends PolymerElement {
     return {
       selected: Number
     };
+  }
+
+  constructor() {
+    super();
+    // To force all event listeners for gestures to be passive.
+    // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events#use-passive-gesture-listeners
+    setPassiveTouchGestures(true);
   }
 
   ready() {
