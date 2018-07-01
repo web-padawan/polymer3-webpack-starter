@@ -13,7 +13,7 @@
     "@polymer/iron-form": "^3.0.0-pre.21",
     "@polymer/iron-icon": "^3.0.0-pre.21",
     "@polymer/polymer": "^3.0.2",
-    "@vaadin/router": "^0.3.0",
+    "@vaadin/router": "^0.4.0",
     "@vaadin/vaadin-button": "^2.0.0-pre.4",
     "@vaadin/vaadin-checkbox": "^2.0.0-pre.4",
     "@vaadin/vaadin-combo-box": "^4.0.1-pre.2",
