@@ -4,19 +4,21 @@
 // caching strategies, as Workbox will auto-inject that part when you build your
 // project. This is the perfect place to implement other great SW features.
 // (e.g. Web Push, etc...)
-
-// This part is needed by the webpack Workbox plugin to inject the precache manifest.
-// You can either leave it at the beginning of your SW, or move it where you prefer.
-// Just make sure you don't delete it, otherwise
 workbox.skipWaiting();
 workbox.clientsClaim();
 workbox.precaching.suppressWarnings();
+
+// This part is needed by the webpack Workbox plugin to inject the precache manifest.
+// See https://developers.google.com/web/tools/workbox/modules/workbox-precaching
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
+
+// See https://developers.google.com/web/tools/workbox/modules/workbox-routing
 workbox.routing.registerNavigationRoute('/index.html');
 workbox.routing.registerRoute(
   /\/vendor\/.*(?!loader).*\.js$/,
   workbox.strategies.staleWhileRevalidate(),
   'GET'
 );
+
 // Uncomment next line to enable offline Google Analytics
 // workbox.googleAnalytics.initialize();
