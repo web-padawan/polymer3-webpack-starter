@@ -55,8 +55,8 @@ const assets = [
     to: OUTPUT_PATH
   },
   {
-    from: resolve('./src/employees.json'),
-    to: OUTPUT_PATH
+    from: resolve('./src/api/employees.json'),
+    to: join(OUTPUT_PATH, 'api')
   },
   {
     from: resolve('./src/manifest.json'),
@@ -111,7 +111,10 @@ const developmentConfig = merge([
       overlay: true,
       port: 3000,
       host: '0.0.0.0',
-      historyApiFallback: true
+      historyApiFallback: true,
+      proxy: {
+        '/api': 'http://localhost:8000'
+      }
     }
   }
 ]);

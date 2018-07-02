@@ -5,6 +5,11 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 
+const users = require('./src/api/employees.json');
+app.get('/api/users', (req, res) => {
+  res.json(users);
+});
+
 app.use(history());
 app.use(serveStatic(__dirname + '/dist/'));
 app.listen(port);
