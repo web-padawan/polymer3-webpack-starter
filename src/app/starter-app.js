@@ -105,7 +105,7 @@ class StarterApp extends PolymerElement {
     this.removeAttribute('unresolved');
 
     window.addEventListener(
-      'vaadin-router-route-changed',
+      'vaadin-router-location-changed',
       this.__onRouteChanged.bind(this)
     );
 
@@ -116,7 +116,7 @@ class StarterApp extends PolymerElement {
   }
 
   __onRouteChanged(e) {
-    switch (e.detail.pathname) {
+    switch (e.detail.location.pathname) {
       case EMPLOYEE_LIST:
         this.selected = 0;
         break;
