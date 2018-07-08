@@ -49,3 +49,8 @@ Serve the built output on localhost `http://127.0.0.1:8000`:
 ```sh
 npm start
 ```
+
+## Known Limitations
+
+- Using `import.meta` suggested by Polymer docs is not supported, see webpack/webpack#6719
+- `@babel/plugin-transform-classes` should be pinned to 7.0.0-beta.35, see Polymer/tools#398
