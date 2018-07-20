@@ -11,9 +11,9 @@ The application uses ES modules for development, and [Webpack](https://webpack.j
 a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
 (inside of the template string literals) are used to reduce production bundle size.
 
-Note: the `Vaadin.Router` is on the road to stable release, but the current version is not
-yet production ready, and the API may change. The ES modules versions of Vaadin components, built
-using Polymer 3, are also in the preview. Stay tuned!
+Note: the `Vaadin.Router` is a Release Candidate and the API is not expected to change,
+but we appreciate any feedback. The ES modules versions of Vaadin components, built
+using Polymer 3, are currently in the preview. Stay tuned!
 
 ## Install dependencies
 
