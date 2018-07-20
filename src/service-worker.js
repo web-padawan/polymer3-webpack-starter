@@ -15,7 +15,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest);
 // See https://developers.google.com/web/tools/workbox/modules/workbox-routing
 workbox.routing.registerNavigationRoute('/index.html');
 workbox.routing.registerRoute(
-  new RegExp('/vendor/(?!.*loader).*.js'),
+  new RegExp('/vendor/(?!.*loader).*.js$'),
   workbox.strategies.staleWhileRevalidate(),
   'GET'
 );
