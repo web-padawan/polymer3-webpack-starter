@@ -1,7 +1,7 @@
 import { Router } from '@vaadin/router';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from './urls';
 
-export default function setupRouter(outlet) {
+export function init(outlet) {
   const router = new Router(outlet);
   router.setRoutes([
     {

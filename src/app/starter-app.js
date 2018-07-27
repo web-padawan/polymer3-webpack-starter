@@ -109,10 +109,11 @@ class StarterApp extends PolymerElement {
       this.__onRouteChanged.bind(this)
     );
 
-    import(/* webpackChunkName: "router" */ '../routes/config').then(config => {
-      const setupRouter = config.default;
-      setupRouter(this.shadowRoot.querySelector('main'));
-    });
+    import(/* webpackChunkName: "router" */ '../routes/router.js').then(
+      router => {
+        router.init(this.shadowRoot.querySelector('main'));
+      }
+    );
   }
 
   __onRouteChanged(e) {
