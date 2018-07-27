@@ -1,5 +1,5 @@
 import { Router } from '@vaadin/router';
-import { EMPLOYEE_LIST, NEW_EMPLOYEE } from './pages';
+import { EMPLOYEE_LIST, NEW_EMPLOYEE } from './urls';
 
 export default function setupRouter(outlet) {
   const router = new Router(outlet);
