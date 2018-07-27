@@ -12,6 +12,7 @@ import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
+import { onLocationChanged } from '../routes/utils';
 
 /**
  * Starter application shell.
@@ -104,10 +105,7 @@ class StarterApp extends PolymerElement {
 
     this.removeAttribute('unresolved');
 
-    window.addEventListener(
-      'vaadin-router-location-changed',
-      this.__onRouteChanged.bind(this)
-    );
+    onLocationChanged(this.__onRouteChanged.bind(this));
 
     import(/* webpackChunkName: "router" */ '../routes/router.js').then(
       router => {

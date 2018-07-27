@@ -18,6 +18,8 @@ import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
 import '../styles/shared-styles.js';
+import { EMPLOYEE_LIST } from '../routes/urls';
+import { navigateTo } from '../routes/utils';
 
 /**
  * New employee view.
@@ -115,7 +117,7 @@ class EmployeeNew extends PolymerElement {
         </iron-form>
       </div>
 
-      <vaadin-notification opened="{{formSubmittedOpen}}">
+      <vaadin-notification opened="{{formSubmittedOpen}}" duration="2000">
         <template>
           <div>
             <p><b>Submitted</b></p>
@@ -163,7 +165,10 @@ class EmployeeNew extends PolymerElement {
         ]
       },
       dialogOpen: Boolean,
-      formSubmittedOpen: Boolean,
+      formSubmittedOpen: {
+        type: Boolean,
+        observer: '_formSubmittedOpenChanged'
+      },
       formInvalidOpen: Boolean,
       radioValue: String
     };
@@ -173,6 +178,13 @@ class EmployeeNew extends PolymerElement {
     e.stopPropagation();
     e.preventDefault();
     this.dialogOpen = !this.dialogOpen;
+  }
+
+  _formSubmittedOpenChanged(value, oldValue) {
+    // once notification is closed, redirect to the list page
+    if (oldValue && !value) {
+      navigateTo(EMPLOYEE_LIST);
+    }
   }
 
   _submitForm() {
