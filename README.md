@@ -5,15 +5,13 @@
 # Polymer 3 Webpack Starter
 
 This is an example project demonstrating how you can build a frontend part of the JavaScript
-application using [Vaadin components](https://vaadin.com/components) and [Vaadin.Router](https://github.com/vaadin/vaadin-router) library, and leverage the benefits of the modern tools.
+application using [Vaadin components](https://vaadin.com/components) and [Vaadin Router](https://github.com/vaadin/vaadin-router) library, and leverage the benefits of the modern tools.
 
 The application uses ES modules for development, and [Webpack](https://webpack.js.org) as
 a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
 (inside of the template string literals) are used to reduce production bundle size.
 
-Note: the `Vaadin.Router` is a Release Candidate and the API is not expected to change,
-but we appreciate any feedback. The ES modules versions of Vaadin components, built
-using Polymer 3, are currently in beta. Stay tuned!
+Note: the ES modules versions of Vaadin components, built using Polymer 3, are currently in beta. Stay tuned!
 
 ## Install dependencies
 
