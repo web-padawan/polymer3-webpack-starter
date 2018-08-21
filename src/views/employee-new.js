@@ -16,6 +16,7 @@ import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';
+import '@vaadin/vaadin-time-picker/vaadin-time-picker.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST } from '../routes/urls';
@@ -94,6 +95,16 @@ class EmployeeNew extends PolymerElement {
                     <vaadin-radio-button value="fr">Français</vaadin-radio-button>
                     <vaadin-radio-button value="de">Deutsch</vaadin-radio-button>
                   </vaadin-radio-group>
+                </vaadin-form-item>
+
+                <vaadin-form-item>
+                  <label slot="label">Arrival hour</label>
+                  <vaadin-time-picker class="full-width"></vaadin-time-picker>
+                </vaadin-form-item>
+
+                <vaadin-form-item>
+                  <label slot="label">Departure</label>
+                  <vaadin-time-picker class="full-width"></vaadin-time-picker>
                 </vaadin-form-item>
 
                 <vaadin-form-item colspan="2">
