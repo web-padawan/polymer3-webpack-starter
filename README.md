@@ -11,8 +11,6 @@ The application uses ES modules for development, and [Webpack](https://webpack.j
 a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
 (inside of the template string literals) are used to reduce production bundle size.
 
-Note: the ES modules versions of Vaadin components, built using Polymer 3, are currently in beta. Stay tuned!
-
 ## Install dependencies
 
 ```sh
