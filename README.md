@@ -34,7 +34,7 @@ npm run lint
 
 ## Build
 
-Run the production build:
+Run production build:
 
 ```sh
 npm run build
@@ -44,6 +44,14 @@ Serve the built output on localhost `http://127.0.0.1:8000`:
 
 ```sh
 npm start
+```
+
+## Visualize built output
+
+Run production build and start HTTP server to show bundle report:
+
+```sh
+npm run build:analyze
 ```
 
 ## Known Limitations
