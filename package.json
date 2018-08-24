@@ -91,6 +91,7 @@
     "regenerator-runtime": "^0.12.1",
     "uglify-template-string-loader": "^1.1.0",
     "webpack": "^4.17.1",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4",
@@ -104,6 +105,7 @@
     ]
   },
   "scripts": {
+    "build:analyze": "webpack --env production --analyze",
     "build": "webpack --env production",
     "client": "webpack-dev-server --env development",
     "server": "nodemon server.js",

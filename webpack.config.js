@@ -6,11 +6,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
   : 'development';
+const ANALYZE = process.argv.find(arg => arg.includes('--analyze'));
 const OUTPUT_PATH = ENV === 'production' ? resolve('dist') : resolve('src');
 const INDEX_TEMPLATE = resolve('./src/index.html');
 
@@ -119,6 +121,8 @@ const developmentConfig = merge([
   }
 ]);
 
+const analyzeConfig = ANALYZE ? [new BundleAnalyzerPlugin()] : [];
+
 const productionConfig = merge([
   {
     devtool: 'nosources-source-map',
@@ -139,7 +143,8 @@ const productionConfig = merge([
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
         exclude: [/webcomponents-(?!loader).*\.js$/]
       }),
-      new CompressionPlugin({ test: /\.js$/ })
+      new CompressionPlugin({ test: /\.js$/ }),
+      ...analyzeConfig
     ]
   }
 ]);
