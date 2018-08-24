@@ -11,6 +11,20 @@ The application uses ES modules for development, and [Webpack](https://webpack.j
 a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
 (inside of the template string literals) are used to reduce production bundle size.
 
+## Features
+
+- Latest Polymer 3 and up-to-date [webcomponentsjs](https://github.com/webcomponents/webcomponentsjs) polyfill
+- UI built using latest [Vaadin components](https://vaadin.com/components) shipped as ES modules
+- [Vaadin Router](https://vaadin.com/router) configured for code splitting and lazy loading
+- [webpack 4](https://github.com/webpack/webpack) for easy development and production bundling
+- Up-to-date [Babel 7](https://github.com/babel/babel) verified to work nice with Custom Elements
+- Minification of JavaScript using [babel-preset-minify](https://github.com/babel/minify/tree/master/packages/babel-preset-minify)
+- Minification of HTML and CSS in [tagged template literals](https://github.com/goto-bus-stop/babel-plugin-template-html-minifier)
+- Automatic service worker generation using [Workbox](https://github.com/GoogleChrome/workbox)
+- Automatic [bundle analysis](https://github.com/webpack-contrib/webpack-bundle-analyzer) and report generation
+- Web server using [express](https://github.com/expressjs/express) and [History API](https://github.com/bripkens/connect-history-api-fallback) middleware
+- Solutions for [building](https://github.com/webpack-contrib/compression-webpack-plugin) and [serving](https://github.com/tkoenig89/express-static-gzip) gzipped files
+
 ## Install dependencies
 
 ```sh
@@ -46,7 +60,7 @@ Serve the built output on localhost `http://127.0.0.1:8000`:
 npm start
 ```
 
-## Visualize built output
+## Visualize build output
 
 Run production build and start HTTP server to show bundle report:
 
@@ -54,6 +68,6 @@ Run production build and start HTTP server to show bundle report:
 npm run build:analyze
 ```
 
-## Known Limitations
+## Known limitations
 
 - Using `import.meta` suggested by Polymer docs is not supported, see [webpack/webpack#6719](https://github.com/webpack/webpack/issues/6719)
