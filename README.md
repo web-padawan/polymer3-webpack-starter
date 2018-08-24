@@ -57,4 +57,3 @@ npm run build:analyze
 ## Known Limitations
 
 - Using `import.meta` suggested by Polymer docs is not supported, see [webpack/webpack#6719](https://github.com/webpack/webpack/issues/6719)
-- `@babel/plugin-transform-classes` should be pinned to 7.0.0-beta.35, see [babel/babel#8496](https://github.com/babel/babel/issues/8496)

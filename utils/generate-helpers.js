@@ -3,7 +3,10 @@
 const babelCore = require('@babel/core');
 const path = require('path');
 const fs = require('fs');
-const babelPresetMinify = require('babel-preset-minify')({}, {simplifyComparisons: false});
+const babelPresetMinify = require('babel-preset-minify')(
+  {},
+  { simplifyComparisons: false }
+);
 
 /*
  * There doesn't seem to be documentation on what helpers are available, or
@@ -18,7 +21,6 @@ const babelPresetMinify = require('babel-preset-minify')({}, {simplifyComparison
  * we've excluded.
  */
 const mainHelpers = [
-
   // __proto__ assignment
   'defaults',
   'extends',
@@ -31,6 +33,7 @@ const mainHelpers = [
   'get',
   'getPrototypeOf',
   'inherits',
+  'isNativeFunction',
   // 'inheritsLoose',
   'possibleConstructorReturn',
   'set',
@@ -90,7 +93,7 @@ const mainHelpers = [
 
   // es2018 proposal-object-rest-spread
   'objectSpread',
-  'toPropertyKey',
+  'toPropertyKey'
 
   // proposal-function-sent
   // 'skipFirstGeneratorNext',
@@ -112,14 +115,12 @@ const mainHelpers = [
  * the require.js AMD module loader instead so that the AMD transform does not
  * depend on loading all Babel helpers.
  */
-const amdHelpers = [
-  'interopRequireDefault',
-  'interopRequireWildcard',
-];
+const amdHelpers = ['interopRequireDefault', 'interopRequireWildcard'];
 
 minifyAndWriteJs(
   babelCore.buildExternalHelpers([...mainHelpers, ...amdHelpers]),
-  'babel-helpers.min.js');
+  'babel-helpers.min.js'
+);
 
 const dir = path.dirname(require.resolve('regenerator-runtime'));
 const js = fs.readFileSync(path.join(dir, 'runtime.js'), 'utf-8');
@@ -136,7 +137,9 @@ function minifyAndWriteJs(js, filename) {
   const vendor = path.join(__dirname, '..', 'src', 'vendor');
   try {
     fs.mkdirSync(vendor);
-  } catch (e) { /* don't care */ }
+  } catch (e) {
+    /* don't care */
+  }
   fs.writeFileSync(path.join(vendor, filename), output, {
     encoding: 'utf-8'
   });
