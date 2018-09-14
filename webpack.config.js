@@ -143,7 +143,7 @@ const productionConfig = merge([
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
         exclude: [/webcomponents-(?!loader).*\.js$/]
       }),
-      new CompressionPlugin({ test: /\.js$/ }),
+      new CompressionPlugin({ test: /\.js(\.map)?$/i }),
       ...analyzeConfig
     ]
   }
