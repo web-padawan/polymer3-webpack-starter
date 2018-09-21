@@ -11,7 +11,12 @@ app.get('/api/users', (req, res) => {
 });
 
 app.use(history());
-app.use(serveStatic(__dirname + '/dist/'));
+app.use(
+  serveStatic(__dirname + '/dist/', {
+    enableBrotli: true,
+    orderPreference: ['br']
+  })
+);
 app.listen(port);
 
 console.info(`Project is running at http://localhost:${port}`);
