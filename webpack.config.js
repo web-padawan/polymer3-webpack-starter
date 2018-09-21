@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
@@ -144,6 +145,13 @@ const productionConfig = merge([
         exclude: [/webcomponents-(?!loader).*\.js$/]
       }),
       new CompressionPlugin({ test: /\.js(\.map)?$/i }),
+      new BrotliPlugin({
+        asset: '[path].br[query]',
+        test: /\.js(\.map)?$/i,
+        threshold: 20,
+        minRatio: 0.8,
+        mode: 1
+      }),
       ...analyzeConfig
     ]
   }
