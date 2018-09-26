@@ -83,7 +83,7 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-vaadin": "^0.2.7",
     "html-webpack-plugin": "^4.0.0-alpha",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "lint-staged": "^7.2.2",
     "nodemon": "^1.18.3",
     "prettier": "^1.14.3",
@@ -95,6 +95,11 @@
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4",
     "workbox-webpack-plugin": "^3.6.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -109,7 +114,6 @@
     "client": "webpack-dev-server --env development",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "precommit": "lint-staged",
     "lint": "eslint src/app/*.js src/views/*.js src/styles/*.js",
     "postinstall": "node utils/generate-helpers.js && npm run build",
     "start": "node server.js"
