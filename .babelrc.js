@@ -18,7 +18,6 @@ module.exports = {
     '@babel/transform-function-name',
     '@babel/transform-instanceof',
     '@babel/transform-literals',
-    '@babel/transform-modules-amd',
     '@babel/transform-object-super',
     '@babel/transform-parameters',
     '@babel/transform-regenerator',
@@ -37,6 +36,7 @@ module.exports = {
         [
           'minify',
           {
+            builtIns: false,
             evaluate: false,
             mangle: false,
             simplify: false
