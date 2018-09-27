@@ -23,7 +23,8 @@ a module bundler. The optimizations like code splitting, minifying JavaScript an
 - Automatic service worker generation using [Workbox](https://github.com/GoogleChrome/workbox)
 - Automatic [bundle analysis](https://github.com/webpack-contrib/webpack-bundle-analyzer) and report generation
 - Web server using [express](https://github.com/expressjs/express) and [History API](https://github.com/bripkens/connect-history-api-fallback) middleware
-- Solutions for [building](https://github.com/webpack-contrib/compression-webpack-plugin) and [serving](https://github.com/tkoenig89/express-static-gzip) gzipped files
+- Compressing static files for production using [gzip](https://github.com/webpack-contrib/compression-webpack-plugin) and [Brotli](https://github.com/mynameiswhm/brotli-webpack-plugin) algorithm
+- Serving compressed files using [express-static-gzip](https://github.com/tkoenig89/express-static-gzip) middleware
 
 ## Install dependencies
 
