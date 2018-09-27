@@ -75,6 +75,7 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-template-html-minifier": "^2.0.1",
     "babel-preset-minify": "^0.5.0",
+    "brotli-webpack-plugin": "^1.0.0",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^2.0.0",
     "concurrently": "^4.0.1",
