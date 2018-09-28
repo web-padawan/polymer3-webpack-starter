@@ -1,48 +1,24 @@
 const helperWhitelist = require('./utils/helper-whitelist');
 
 module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+        targets: {
+          ie: 11
+        }
+      }
+    ]
+  ],
   plugins: [
     ['@babel/external-helpers', { whitelist: helperWhitelist }],
     '@babel/syntax-dynamic-import',
-    '@babel/transform-classes',
-    '@babel/syntax-object-rest-spread',
-    '@babel/transform-arrow-functions',
-    '@babel/transform-async-to-generator',
-    '@babel/transform-block-scoped-functions',
-    '@babel/transform-block-scoping',
-    '@babel/transform-computed-properties',
-    '@babel/transform-destructuring',
-    '@babel/transform-duplicate-keys',
-    '@babel/transform-exponentiation-operator',
-    '@babel/transform-for-of',
-    '@babel/transform-function-name',
-    '@babel/transform-instanceof',
-    '@babel/transform-literals',
-    '@babel/transform-object-super',
-    '@babel/transform-parameters',
-    '@babel/transform-regenerator',
-    '@babel/transform-shorthand-properties',
-    '@babel/transform-spread',
-    '@babel/transform-sticky-regex',
-    '@babel/transform-typeof-symbol',
-    '@babel/transform-unicode-regex'
+    '@babel/syntax-object-rest-spread'
   ],
   env: {
-    development: {
-      plugins: ['@babel/transform-template-literals']
-    },
     production: {
-      presets: [
-        [
-          'minify',
-          {
-            builtIns: false,
-            evaluate: false,
-            mangle: false,
-            simplify: false
-          }
-        ]
-      ],
       plugins: [
         [
           'template-html-minifier',
@@ -56,8 +32,7 @@ module.exports = {
               removeComments: true
             }
           }
-        ],
-        '@babel/transform-template-literals'
+        ]
       ]
     }
   }
