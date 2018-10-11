@@ -53,7 +53,7 @@ class StarterApp extends PolymerElement {
         <!-- Drawer content -->
         <app-drawer slot="drawer" swipe-open="[[narrow]]">
           <app-toolbar>Menu</app-toolbar>
-          <vaadin-list-box selected="{{selected}}">
+          <vaadin-list-box selected="{{selected}}" aria-controls="mainContent">
             <vaadin-item>
               <a href="/employee-list">Employee list</a>
             </vaadin-item>
@@ -75,7 +75,7 @@ class StarterApp extends PolymerElement {
               </div>
             </app-toolbar>
           </app-header>
-          <main>
+          <main aria-live="polite" id="mainContent">
             <!-- view content -->
           </main>
         </app-header-layout>
@@ -96,7 +96,7 @@ class StarterApp extends PolymerElement {
   constructor() {
     super();
     // To force all event listeners for gestures to be passive.
-    // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events#use-passive-gesture-listeners
+    // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
   }
 
