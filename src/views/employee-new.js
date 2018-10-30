@@ -6,7 +6,7 @@ import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
 import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
 import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
 import '@vaadin/vaadin-dialog/vaadin-dialog.js';
-import '@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
+import '@vaadin/vaadin-select/vaadin-select.js';
 import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
 import '@vaadin/vaadin-form-layout/vaadin-form-item.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
@@ -45,7 +45,7 @@ class EmployeeNew extends PolymerElement {
               <vaadin-form-layout>
                 <vaadin-form-item>
                   <label slot="label">Title</label>
-                  <vaadin-dropdown-menu class="full-width">
+                  <vaadin-select class="full-width">
                     <template>
                       <vaadin-list-box>
                         <vaadin-item>Mr</vaadin-item>
@@ -55,7 +55,7 @@ class EmployeeNew extends PolymerElement {
                         <vaadin-item>Other</vaadin-item>
                       </vaadin-list-box>
                     </template>
-                  </vaadin-dropdown-menu>
+                  </vaadin-select>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
