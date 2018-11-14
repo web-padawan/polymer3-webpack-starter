@@ -6,6 +6,7 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: false,
+        exclude: ['transform-async-to-generator', 'transform-regenerator'],
         targets: {
           ie: 11
         }
@@ -13,9 +14,20 @@ module.exports = {
     ]
   ],
   plugins: [
-    ['@babel/external-helpers', { whitelist: helperWhitelist }],
+    [
+      '@babel/external-helpers',
+      {
+        whitelist: helperWhitelist
+      }
+    ],
     '@babel/syntax-dynamic-import',
-    '@babel/syntax-object-rest-spread'
+    '@babel/syntax-object-rest-spread',
+    [
+      'module:fast-async',
+      {
+        spec: true
+      }
+    ]
   ],
   env: {
     production: {

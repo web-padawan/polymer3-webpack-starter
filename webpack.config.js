@@ -42,10 +42,6 @@ const helpers = [
   {
     from: resolve('./src/vendor/babel-helpers.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
-  },
-  {
-    from: resolve('./src/vendor/regenerator-runtime.min.js'),
-    to: join(OUTPUT_PATH, 'vendor')
   }
 ];
 
