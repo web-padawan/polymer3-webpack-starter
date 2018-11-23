@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.1.6",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "babel-plugin-template-html-minifier": "^2.0.1",
+    "babel-plugin-template-html-minifier": "^2.1.1",
     "babel-preset-minify": "^0.5.0",
     "brotli-webpack-plugin": "^1.0.0",
     "clean-webpack-plugin": "^1.0.0",
@@ -59,7 +59,8 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-vaadin": "^0.2.7",
     "fast-async": "^6.3.8",
-    "html-webpack-plugin": "^4.0.0-alpha",
+    "fs-extra": "^7.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.4",
     "lint-staged": "^8.0.4",
     "nodemon": "^1.18.6",
@@ -70,7 +71,6 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "webpack-merge": "^4.1.4",
     "workbox-webpack-plugin": "^3.6.3"
   },
   "husky": {
@@ -86,11 +86,11 @@
     ]
   },
   "scripts": {
-    "build:analyze": "webpack --env production --analyze",
-    "build": "webpack --env production",
-    "client": "webpack-dev-server --env development",
+    "build:analyze": "webpack --config webpack.config.prod.js --analyze",
+    "build": "webpack --config webpack.config.prod.js",
+    "client": "webpack-dev-server --config webpack.config.dev.js",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint src/app/*.js src/views/*.js src/styles/*.js",
     "postinstall": "node utils/generate-helpers.js && npm run build",
     "start": "node server.js"
