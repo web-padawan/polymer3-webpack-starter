@@ -1,7 +1,7 @@
 const express = require('express');
 const serveStatic = require('express-static-gzip');
 const history = require('connect-history-api-fallback');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8002;
 
 const app = express();
 

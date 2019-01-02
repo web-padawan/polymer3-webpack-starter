@@ -2,14 +2,15 @@
 
 const { resolve, join } = require('path');
 const merge = require('webpack-merge');
+const { BabelMultiTargetPlugin } = require('webpack-babel-multi-target-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const helperWhitelist = require('./utils/helper-whitelist');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
@@ -75,25 +76,91 @@ const commonConfig = merge([
       rules: [
         {
           test: /\.js$/,
-          // We need to transpile Polymer,so whitelist packages containing ES modules
-          exclude: /node_modules\/(?!(@webcomponents\/shadycss|lit-html|@polymer|@vaadin)\/).*/,
           use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                babelrc: true,
-                extends: join(__dirname + '/.babelrc'),
-                cacheDirectory: true,
-                envName: ENV
-              }
-            },
-            {
-              loader: 'uglify-template-string-loader'
-            }
+            BabelMultiTargetPlugin.loader(),
+            'uglify-template-string-loader'
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      // Babel configuration for multiple output bundles targeting different sets
+      // of browsers
+      new BabelMultiTargetPlugin({
+        babel: {
+          plugins: [
+            [
+              require('@babel/plugin-external-helpers'),
+              {
+                whitelist: helperWhitelist
+              }
+            ],
+
+            [
+              'module:fast-async',
+              {
+                spec: true
+              }
+            ],
+
+            // Minify HTML and CSS in tagged template literals
+            [
+              require('babel-plugin-template-html-minifier'),
+              {
+                modules: {
+                  '@polymer/polymer/lib/utils/html-tag.js': ['html']
+                },
+                htmlMinifier: {
+                  collapseWhitespace: true,
+                  minifyCSS: true,
+                  removeComments: true
+                }
+              }
+            ]
+          ],
+
+          // @babel/preset-env options common for all bundles
+          presetOptions: {
+            // debug: true, // uncomment to debug the babel configuration
+            exclude: ['transform-async-to-generator', 'transform-regenerator'],
+
+            // Don’t add polyfills, they are provided from webcomponents-loader.js
+            useBuiltIns: false
+          }
+        },
+
+        // Modules excluded from targeting into different bundles
+        doNotTarget: [
+          // Array of RegExp patterns
+        ],
+
+        // Modules that should not be transpiled
+        exclude: [
+          // Array of RegExp patterns
+        ],
+
+        // Target browsers with and without ES modules support
+        targets: {
+          es6: {
+            browsers: [
+              'last 2 Chrome major versions',
+              'last 2 ChromeAndroid major versions',
+              'last 2 Edge major versions',
+              'last 2 Firefox major versions',
+              'last 2 Safari major versions',
+              'last 2 iOS major versions'
+            ],
+            tagAssetsWithKey: false, // don’t append a suffix to the file name
+            esModule: true // marks the bundle used with <script type="module">
+          },
+          es5: {
+            browsers: ['ie 11'],
+            tagAssetsWithKey: true, // append a suffix to the file name
+            noModule: true // marks the bundle included without `type="module"`
+          }
+        }
+      })
+    ]
   }
 ]);
 
@@ -125,44 +192,6 @@ const analyzeConfig = ANALYZE ? [new BundleAnalyzerPlugin()] : [];
 const productionConfig = merge([
   {
     devtool: 'nosources-source-map',
-    optimization: {
-      minimizer: [
-        new TerserWebpackPlugin({
-          terserOptions: {
-            parse: {
-              // we want terser to parse ecma 8 code. However, we don't want it
-              // to apply any minfication steps that turns valid ecma 5 code
-              // into invalid ecma 5 code. This is why the 'compress' and 'output'
-              // sections only apply transformations that are ecma 5 safe
-              // https://github.com/facebook/create-react-app/pull/4234
-              ecma: 8
-            },
-            compress: {
-              ecma: 5,
-              warnings: false,
-              // Disabled because of an issue with Uglify breaking seemingly valid code:
-              // https://github.com/facebook/create-react-app/issues/2376
-              // Pending further investigation:
-              // https://github.com/mishoo/UglifyJS2/issues/2011
-              comparisons: false
-            },
-            output: {
-              ecma: 5,
-              comments: false,
-              // Turned on because emoji and regex is not minified properly using default
-              // https://github.com/facebook/create-react-app/issues/2488
-              ascii_only: true
-            }
-          },
-          // Use multi-process parallel running to improve the build speed
-          // Default number of concurrent runs: os.cpus().length - 1
-          parallel: true,
-          // Enable file caching
-          cache: true,
-          sourceMap: true
-        })
-      ]
-    },
     plugins: [
       new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
