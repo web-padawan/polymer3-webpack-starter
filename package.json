@@ -63,12 +63,12 @@
     "lint-staged": "^8.0.4",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
-    "terser-webpack-plugin": "^1.1.0",
+    "terser-webpack-plugin": "^1.2.1",
     "uglify-template-string-loader": "^1.1.0",
-    "webpack": "^4.28.1",
+    "webpack": "^4.28.3",
     "webpack-babel-multi-target-plugin": "2.0.1",
     "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^3.2.0",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.5",
     "workbox-webpack-plugin": "^3.6.3"
@@ -92,7 +92,7 @@
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint src/app/*.js src/views/*.js src/styles/*.js",
-    "postinstall": "node utils/generate-helpers.js",
+    "postinstall": "node utils/generate-helpers.js && npm run build",
     "start": "node server.js"
   }
 }
