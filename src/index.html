@@ -44,10 +44,6 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta name="msapplication-TileColor" content="#1576f3">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <script>if (!window.customElements) { document.write('<!--'); }</script>
-    <script src="./vendor/custom-elements-es5-adapter.js"></script>
-    <!--! DO NOT REMOVE THIS COMMENT, WE NEED ITS CLOSING MARKER -->
-
     <script>
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
@@ -90,7 +86,7 @@ This program is available under Apache License Version 2.0, available at https:/
       Vaadin App
     </starter-app>
     <!-- Load the external helpers to run the code transpiled to ES5 -->
-    <script src="./vendor/babel-helpers.min.js"></script>
+    <script nomodule src="./vendor/babel-helpers.min.js"></script>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="./vendor/webcomponents-loader.js"></script>
   </body>
