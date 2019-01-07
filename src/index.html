@@ -44,15 +44,6 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta name="msapplication-TileColor" content="#1576f3">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <script>
-      // Load and register pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('sw.js');
-        });
-      }
-    </script>
-
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {
@@ -85,6 +76,8 @@ This program is available under Apache License Version 2.0, available at https:/
     <starter-app unresolved>
       Vaadin App
     </starter-app>
+    <!-- Load and register pre-caching Service Worker -->
+    <script src="./vendor/register-service-worker.min.js"></script>
     <!-- Load the external helpers to run the code transpiled to ES5 -->
     <script nomodule src="./vendor/babel-helpers.min.js"></script>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->

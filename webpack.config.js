@@ -32,17 +32,16 @@ const polyfills = [
     from: resolve(`${webcomponentsjs}/bundles/*.{js,map}`),
     to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
-  },
-  {
-    from: resolve(`${webcomponentsjs}/custom-elements-es5-adapter.js`),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
   }
 ];
 
 const helpers = [
   {
     from: resolve('./src/vendor/babel-helpers.min.js'),
+    to: join(OUTPUT_PATH, 'vendor')
+  },
+  {
+    from: resolve('./src/vendor/register-service-worker.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
   }
 ];
