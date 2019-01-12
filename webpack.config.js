@@ -134,6 +134,9 @@ const commonConfig = merge([
           // Array of RegExp patterns
         ],
 
+        // Fix for `nomodule` attribute to work correctly in Safari 10.1
+        safari10NoModuleFix: true,
+
         // Target browsers with and without ES modules support
         targets: {
           es6: {
@@ -142,8 +145,8 @@ const commonConfig = merge([
               'last 2 ChromeAndroid major versions',
               'last 2 Edge major versions',
               'last 2 Firefox major versions',
-              'last 2 Safari major versions',
-              'last 2 iOS major versions'
+              'last 3 Safari major versions',
+              'last 3 iOS major versions'
             ],
             tagAssetsWithKey: false, // don’t append a suffix to the file name
             esModule: true // marks the bundle used with <script type="module">
