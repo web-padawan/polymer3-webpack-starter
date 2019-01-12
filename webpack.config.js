@@ -44,6 +44,10 @@ const helpers = [
   {
     from: resolve('./src/vendor/babel-helpers.min.js'),
     to: join(OUTPUT_PATH, 'vendor')
+  },
+  {
+    from: resolve('./src/vendor/regenerator-runtime.min.js'),
+    to: join(OUTPUT_PATH, 'vendor')
   }
 ];
 
@@ -97,13 +101,6 @@ const commonConfig = merge([
               }
             ],
 
-            [
-              'module:fast-async',
-              {
-                spec: true
-              }
-            ],
-
             // Minify HTML and CSS in tagged template literals
             [
               require('babel-plugin-template-html-minifier'),
@@ -122,9 +119,6 @@ const commonConfig = merge([
 
           // @babel/preset-env options common for all bundles
           presetOptions: {
-            // Don't include regenerator-runtime, we use fast-async instead
-            exclude: ['transform-async-to-generator', 'transform-regenerator'],
-
             // Don’t add polyfills, they are provided from webcomponents-loader.js
             useBuiltIns: false
           }

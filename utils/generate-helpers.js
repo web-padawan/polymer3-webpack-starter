@@ -16,6 +16,10 @@ minifyAndWriteJs(
   'babel-helpers.min.js'
 );
 
+const dir = path.dirname(require.resolve('regenerator-runtime'));
+const js = fs.readFileSync(path.join(dir, 'runtime.js'), 'utf-8');
+minifyAndWriteJs(js, 'regenerator-runtime.min.js');
+
 /**
  * @param {string} js
  * @param {string} filename
