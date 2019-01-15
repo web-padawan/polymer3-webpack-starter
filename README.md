@@ -20,7 +20,7 @@ a module bundler. The optimizations like code splitting, minifying JavaScript an
 - Up-to-date [Babel 7](https://github.com/babel/babel) verified to work nice with Custom Elements
 - Modern build for evergreen browsers using [BabelMultiTargetPlugin](https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin)
 - Minification of JavaScript using [Terser](https://github.com/terser-js/terser) supporting ES2015+
-- Minification of HTML and CSS in [tagged template literals](https://github.com/goto-bus-stop/babel-plugin-template-html-minifier)
+- Minification of HTML and CSS in [tagged template literals](https://github.com/cfware/babel-plugin-template-html-minifier)
 - Automatic service worker generation using [Workbox](https://github.com/GoogleChrome/workbox)
 - Automatic [bundle analysis](https://github.com/webpack-contrib/webpack-bundle-analyzer) and report generation
 - Web server using [express](https://github.com/expressjs/express) and [History API](https://github.com/bripkens/connect-history-api-fallback) middleware
