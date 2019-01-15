@@ -72,4 +72,6 @@ npm run build:analyze
 
 ## Known limitations
 
-- Using `import.meta` suggested by Polymer docs is not supported, see [webpack/webpack#6719](https://github.com/webpack/webpack/issues/6719)
+- Using `import.meta` suggested by Polymer docs is not supported out of the box, see [webpack/webpack#6719](https://github.com/webpack/webpack/issues/6719).
+  Support can be added with [babel-plugin-bundled-import-meta](https://github.com/cfware/babel-plugin-bundled-import-meta) or
+  webpack loader [import-meta-url-loader](https://github.com/open-wc/open-wc/blob/master/packages/webpack/loaders/import-meta-url-loader.js)
