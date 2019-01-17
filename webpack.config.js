@@ -32,11 +32,6 @@ const polyfills = [
     from: resolve(`${webcomponentsjs}/bundles/*.{js,map}`),
     to: join(OUTPUT_PATH, 'vendor', 'bundles'),
     flatten: true
-  },
-  {
-    from: resolve(`${webcomponentsjs}/custom-elements-es5-adapter.js`),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
   }
 ];
 
