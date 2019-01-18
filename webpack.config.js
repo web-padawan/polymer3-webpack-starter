@@ -130,7 +130,7 @@ const commonConfig = merge([
         ],
 
         // Fix for `nomodule` attribute to work correctly in Safari 10.1
-        safari10NoModuleFix: true,
+        safari10NoModuleFix: 'inline-data-base64',
 
         // Target browsers with and without ES modules support
         targets: {
@@ -211,7 +211,10 @@ const productionConfig = merge([
       new InjectManifest({
         swSrc: resolve('src', 'service-worker.js'),
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
-        exclude: [/webcomponents-(?!loader).*\.js$/]
+        exclude: [
+          /.*\/webcomponents-(?!loader).*\.js(\.map)?$/,
+          /.*\.es5\..*\.js$/
+        ]
       }),
       new CompressionPlugin({ test: /\.js(\.map)?$/i }),
       new BrotliPlugin({
