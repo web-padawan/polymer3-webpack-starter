@@ -55,7 +55,7 @@
     "concurrently": "^4.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^3.5.0",
     "eslint-config-vaadin": "^0.2.7",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.4",
