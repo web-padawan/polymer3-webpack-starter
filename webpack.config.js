@@ -211,7 +211,10 @@ const productionConfig = merge([
       new InjectManifest({
         swSrc: resolve('src', 'service-worker.js'),
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
-        exclude: [/webcomponents-(?!loader).*\.js$/]
+        exclude: [
+          /.*\/webcomponents-(?!loader).*\.js(\.map)?$/,
+          /.*\.es5\..*\.js$/
+        ]
       }),
       new CompressionPlugin({ test: /\.js(\.map)?$/i }),
       new BrotliPlugin({
