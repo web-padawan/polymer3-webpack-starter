@@ -130,7 +130,7 @@ const commonConfig = merge([
         ],
 
         // Fix for `nomodule` attribute to work correctly in Safari 10.1
-        safari10NoModuleFix: true,
+        safari10NoModuleFix: 'inline-data-base64',
 
         // Target browsers with and without ES modules support
         targets: {
