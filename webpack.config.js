@@ -192,7 +192,9 @@ const productionConfig = merge([
             output: {
               comments: false
             }
-          }
+          },
+          sourceMap: true,
+          parallel: true
         })
       ]
     },
@@ -212,7 +214,8 @@ const productionConfig = merge([
         swSrc: resolve('src', 'service-worker.js'),
         swDest: resolve(OUTPUT_PATH, 'sw.js'),
         exclude: [
-          /.*\/webcomponents-(?!loader).*\.js(\.map)?$/,
+          /.*\.map$/,
+          /.*\/webcomponents-(?!loader).*\.js$/,
           /.*\.es5\..*\.js$/
         ]
       }),
