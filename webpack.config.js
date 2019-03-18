@@ -136,18 +136,19 @@ const commonConfig = merge([
         targets: {
           es6: {
             browsers: [
-              'last 2 Chrome major versions',
-              'last 2 ChromeAndroid major versions',
-              'last 2 Edge major versions',
-              'last 2 Firefox major versions',
-              'last 3 Safari major versions',
-              'last 3 iOS major versions'
+              'Chrome >= 60',
+              'Safari >= 10.1',
+              'iOS >= 10.3',
+              'Firefox >= 54',
+              'Edge >= 15'
             ],
             tagAssetsWithKey: false, // don’t append a suffix to the file name
             esModule: true // marks the bundle used with <script type="module">
           },
           es5: {
-            browsers: ['ie 11'],
+            browsers: [
+              'defaults' // > 0.5%, last 2 versions, Firefox ESR, not dead
+            ],
             tagAssetsWithKey: true, // append a suffix to the file name
             noModule: true // marks the bundle included without `type="module"`
           }
