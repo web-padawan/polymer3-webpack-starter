@@ -12,6 +12,7 @@ const BrotliPlugin = require('brotli-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const helperWhitelist = require('./utils/helper-whitelist');
+const helperWhitelistModern = require('./utils/helper-whitelist-modern');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
@@ -37,12 +38,9 @@ const polyfills = [
 
 const helpers = [
   {
-    from: resolve('./src/vendor/babel-helpers.min.js'),
-    to: join(OUTPUT_PATH, 'vendor')
-  },
-  {
-    from: resolve('./src/vendor/regenerator-runtime.min.js'),
-    to: join(OUTPUT_PATH, 'vendor')
+    from: resolve('./src/vendor/*.js'),
+    to: join(OUTPUT_PATH, 'vendor'),
+    flatten: true
   }
 ];
 
@@ -92,7 +90,7 @@ const commonConfig = merge([
             [
               require('@babel/plugin-external-helpers'),
               {
-                whitelist: helperWhitelist
+                whitelist: [...helperWhitelist, ...helperWhitelistModern]
               }
             ],
 
@@ -115,7 +113,8 @@ const commonConfig = merge([
           // @babel/preset-env options common for all bundles
           presetOptions: {
             // Don’t add polyfills, they are provided from webcomponents-loader.js
-            useBuiltIns: false
+            useBuiltIns: false,
+            debug: true
           }
         },
 
@@ -199,7 +198,7 @@ const productionConfig = merge([
       ]
     },
     plugins: [
-      new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
+      new CleanWebpackPlugin({ verbose: true }),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE,

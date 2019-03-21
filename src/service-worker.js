@@ -4,8 +4,8 @@
 // caching strategies, as Workbox will auto-inject that part when you build your
 // project. This is the perfect place to implement other great SW features.
 // (e.g. Web Push, etc...)
-workbox.clientsClaim();
-workbox.precaching.suppressWarnings();
+workbox.core.clientsClaim();
+workbox.precaching.cleanupOutdatedCaches();
 
 // This part is needed by the webpack Workbox plugin to inject the precache manifest.
 // See https://developers.google.com/web/tools/workbox/modules/workbox-precaching
@@ -15,7 +15,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest);
 workbox.routing.registerNavigationRoute('/index.html');
 workbox.routing.registerRoute(
   new RegExp('/vendor/(?!.*loader).*.js$'),
-  workbox.strategies.staleWhileRevalidate(),
+  new workbox.strategies.StaleWhileRevalidate(),
   'GET'
 );
 
