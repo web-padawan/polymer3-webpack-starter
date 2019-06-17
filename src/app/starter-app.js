@@ -40,7 +40,7 @@ class StarterApp extends PolymerElement {
           padding: 0;
         }
         h3 {
-          padding: 0 16px;
+          padding: 0 var(--lumo-space-m);
           font-weight: 400;
         }
         a {
