@@ -70,6 +70,7 @@ class StarterApp extends PolymerElement {
           </div>
         </nav>
 
+        <!-- Drawer content -->
         <section slot="drawer">
           <h3>Menu</h3>
           <vaadin-list-box selected="{{selected}}" aria-controls="mainContent">
@@ -82,6 +83,7 @@ class StarterApp extends PolymerElement {
           </vaadin-list-box>
         </section>
 
+        <!-- Main content -->
         <main aria-live="polite" id="mainContent">
           <!-- view content -->
         </main>
