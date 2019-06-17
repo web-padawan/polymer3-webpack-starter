@@ -5,6 +5,7 @@ import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '../styles/layout-styles.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
 import { onLocationChanged } from '../routes/utils';
@@ -21,20 +22,6 @@ class StarterApp extends PolymerElement {
       <style include="shared-styles">
         :host {
           display: block;
-        }
-        nav {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          color: var(--lumo-base-color);
-          background: var(--lumo-primary-color);
-        }
-        vaadin-drawer-toggle {
-          width: var(--lumo-size-m);
-          height: var(--lumo-size-m);
-          margin: 0 var(--lumo-space-m);
-          padding: 0;
-          background: var(--lumo-tint);
         }
         vaadin-item {
           padding: 0;
