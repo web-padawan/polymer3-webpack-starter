@@ -3,7 +3,7 @@
 const { resolve, join } = require('path');
 const merge = require('webpack-merge');
 const { BabelMultiTargetPlugin } = require('webpack-babel-multi-target-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -199,7 +199,7 @@ const productionConfig = merge([
       ]
     },
     plugins: [
-      new CleanWebpackPlugin([OUTPUT_PATH], { verbose: true }),
+      new CleanWebpackPlugin(),
       new CopyWebpackPlugin([...polyfills, ...helpers, ...assets]),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE,
