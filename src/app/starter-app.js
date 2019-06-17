@@ -30,7 +30,6 @@ class StarterApp extends PolymerElement {
           background: var(--lumo-primary-color);
         }
         vaadin-drawer-toggle {
-          display: flex;
           width: 36px;
           height: 36px;
           padding: 0;
