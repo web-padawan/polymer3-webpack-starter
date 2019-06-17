@@ -1,15 +1,10 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import '@polymer/app-layout/app-drawer/app-drawer.js';
-import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
-import '@polymer/app-layout/app-header/app-header.js';
-import '@polymer/app-layout/app-header-layout/app-header-layout.js';
-import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
+import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
-import '@vaadin/vaadin-lumo-styles/icons.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
 import { onLocationChanged } from '../routes/utils';
@@ -27,16 +22,26 @@ class StarterApp extends PolymerElement {
         :host {
           display: block;
         }
-        app-header {
+        nav {
+          width: 100%;
+          display: flex;
+          align-items: center;
           color: var(--lumo-base-color);
           background: var(--lumo-primary-color);
         }
-        vaadin-button {
-          margin-right: var(--lumo-space-m);
+        vaadin-drawer-toggle {
+          width: var(--lumo-size-m);
+          height: var(--lumo-size-m);
+          margin: 0 var(--lumo-space-m);
+          padding: 0;
           background: var(--lumo-tint);
         }
         vaadin-item {
           padding: 0;
+        }
+        h3 {
+          padding: 0 var(--lumo-space-m);
+          font-weight: 400;
         }
         a {
           display: block;
@@ -47,12 +52,27 @@ class StarterApp extends PolymerElement {
         a:hover {
           text-decoration: none;
         }
+        [main-title] {
+          padding: var(--lumo-space-m) 0;
+          font-size: var(--lumo-font-size-xl);
+          line-height: var(--lumo-line-height-m);
+          font-weight: 400;
+        }
       </style>
 
-      <app-drawer-layout fullbleed narrow="{{narrow}}">
+      <vaadin-app-layout>
+        <nav slot="navbar">
+          <aside>
+            <vaadin-drawer-toggle></vaadin-drawer-toggle>
+          </aside>
+          <div main-title>
+            <slot></slot>
+          </div>
+        </nav>
+
         <!-- Drawer content -->
-        <app-drawer slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Menu</app-toolbar>
+        <section slot="drawer">
+          <h3>Menu</h3>
           <vaadin-list-box selected="{{selected}}" aria-controls="mainContent">
             <vaadin-item>
               <a href="/employee-list">Employee list</a>
@@ -61,25 +81,13 @@ class StarterApp extends PolymerElement {
               <a href="/employee-new">New employee</a>
             </vaadin-item>
           </vaadin-list-box>
-        </app-drawer>
+        </section>
 
         <!-- Main content -->
-        <app-header-layout>
-          <app-header slot="header">
-            <app-toolbar>
-              <vaadin-button theme="icon" hidden$="[[!narrow]]" aria-label="Toggle menu" drawer-toggle>
-                <iron-icon icon="lumo:menu"></iron-icon>
-              </vaadin-button>
-              <div main-title>
-                <slot></slot>
-              </div>
-            </app-toolbar>
-          </app-header>
-          <main aria-live="polite" id="mainContent">
-            <!-- view content -->
-          </main>
-        </app-header-layout>
-      </app-drawer-layout>
+        <main aria-live="polite" id="mainContent">
+          <!-- view content -->
+        </main>
+      </vaadin-app-layout>
     `;
   }
 
