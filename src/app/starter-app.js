@@ -5,7 +5,6 @@ import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
 import '@vaadin/vaadin-item/vaadin-item.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
-import '@vaadin/vaadin-lumo-styles/icons.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
 import { onLocationChanged } from '../routes/utils';
