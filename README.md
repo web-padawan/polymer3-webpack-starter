@@ -15,6 +15,7 @@ a module bundler. The optimizations like code splitting, minifying JavaScript an
 
 - Latest Polymer 3 and up-to-date [webcomponentsjs](https://github.com/webcomponents/webcomponentsjs) polyfill
 - UI built using latest [Vaadin components](https://vaadin.com/components) shipped as ES modules
+- Application with two different themes: [Lumo](https://github.com/vaadin/vaadin-lumo-styles) and [Material](https://github.com/vaadin/vaadin-material-styles)
 - [Vaadin Router](https://vaadin.com/router) configured for code splitting and lazy loading
 - [webpack 4](https://github.com/webpack/webpack) for easy development and production bundling
 - Up-to-date [Babel 7](https://github.com/babel/babel) verified to work nice with Custom Elements
@@ -69,6 +70,10 @@ Run production build and start HTTP server to show bundle report:
 ```sh
 npm run build:analyze
 ```
+
+## Material version
+
+Check out [material](https://github.com/web-padawan/polymer3-webpack-starter/tree/material) branch for Material version of the starter, and a [full diff](https://github.com/web-padawan/polymer3-webpack-starter/compare/material) of changes.
 
 ## Known limitations
 
