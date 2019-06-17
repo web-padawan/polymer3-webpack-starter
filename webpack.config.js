@@ -139,9 +139,10 @@ const commonConfig = merge([
               'last 2 Chrome major versions',
               'last 2 ChromeAndroid major versions',
               'last 2 Edge major versions',
-              'last 2 Firefox major versions',
-              'last 3 Safari major versions',
-              'last 3 iOS major versions'
+              'last 2 Firefox major versions'
+              // FIXME(web-padawan): template-literals transform is used in Safari 12
+              // 'last 3 Safari major versions',
+              // 'last 3 iOS major versions'
             ],
             tagAssetsWithKey: false, // don’t append a suffix to the file name
             esModule: true // marks the bundle used with <script type="module">
