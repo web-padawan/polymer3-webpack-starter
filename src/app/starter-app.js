@@ -32,7 +32,7 @@ class StarterApp extends PolymerElement {
         vaadin-drawer-toggle {
           width: var(--lumo-size-m);
           height: var(--lumo-size-m);
-          margin: var(--lumo-space-m);
+          margin: 0 var(--lumo-space-m);
           padding: 0;
           background: var(--lumo-tint);
         }
@@ -53,8 +53,9 @@ class StarterApp extends PolymerElement {
           text-decoration: none;
         }
         [main-title] {
+          padding: var(--lumo-space-m) 0;
           font-size: var(--lumo-font-size-xl);
-          line-height: var(--lumo-line-height);
+          line-height: var(--lumo-line-height-m);
           font-weight: 400;
         }
       </style>
