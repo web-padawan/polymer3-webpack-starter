@@ -49,9 +49,7 @@ class StarterApp extends PolymerElement {
 
       <vaadin-app-layout>
         <nav slot="navbar">
-          <aside>
-            <vaadin-drawer-toggle></vaadin-drawer-toggle>
-          </aside>
+          <vaadin-drawer-toggle></vaadin-drawer-toggle>
           <div main-title>
             <slot></slot>
           </div>
