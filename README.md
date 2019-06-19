@@ -9,7 +9,7 @@ application using [Vaadin components](https://vaadin.com/components) and [Vaadin
 
 [Lumo version ↗](https://polymer3-webpack-starter.herokuapp.com/)
 |
-[Material version ↗](https://whispering-caverns-73554.herokuapp.com)
+[Material version ↗](https://polymer3-material-starter.herokuapp.com/)
 
 ## Features
 
@@ -73,7 +73,7 @@ npm run build:analyze
 
 ## Material version
 
-Check out [material](https://github.com/web-padawan/polymer3-webpack-starter/tree/material) branch for [Material version](https://whispering-caverns-73554.herokuapp.com/employee-list) of the starter, and a [full diff](https://github.com/web-padawan/polymer3-webpack-starter/compare/material) of changes.
+Check out [material](https://github.com/web-padawan/polymer3-webpack-starter/tree/material) branch for [Material version](https://polymer3-material-starter.herokuapp.com/) of the starter, and a [full diff](https://github.com/web-padawan/polymer3-webpack-starter/compare/material) of changes.
 
 ## Known limitations
 
