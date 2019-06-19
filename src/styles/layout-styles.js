@@ -12,9 +12,7 @@ inject(html`
           background: var(--lumo-base-color);
         }
 
-        [part='navbar'] ::slotted([slot='navbar']) {
-          width: 100%;
-          display: flex;
+        [part='navbar'] {
           align-items: center;
           color: var(--lumo-base-color);
           background: var(--lumo-primary-color);
@@ -29,11 +27,12 @@ inject(html`
     <template>
       <style>
         :host {
-          width: var(--lumo-size-m);
-          height: var(--lumo-size-m);
+          width: var(--lumo-size-l);
+          height: var(--lumo-size-l);
           margin: 0 var(--lumo-space-m);
           padding: 0;
-          background: var(--lumo-tint);
+          background: transparent;
+          color: currentColor;
         }
       </style>
     </template>
