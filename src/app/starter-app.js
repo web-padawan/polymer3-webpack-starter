@@ -23,10 +23,6 @@ class StarterApp extends PolymerElement {
         :host {
           display: block;
         }
-        h3 {
-          padding: 0 var(--lumo-space-m);
-          font-weight: 400;
-        }
         a {
           color: inherit;
         }
@@ -42,6 +38,7 @@ class StarterApp extends PolymerElement {
       </style>
 
       <vaadin-app-layout>
+        <!-- Navbar content -->
         <vaadin-drawer-toggle slot="navbar"></vaadin-drawer-toggle>
         <div main-title slot="navbar">
           <slot></slot>
@@ -49,7 +46,6 @@ class StarterApp extends PolymerElement {
 
         <!-- Drawer content -->
         <section slot="drawer">
-          <h3>Menu</h3>
           <vaadin-tabs
             selected="{{selected}}"
             orientation="vertical"
