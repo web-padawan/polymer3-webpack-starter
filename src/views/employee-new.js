@@ -60,17 +60,29 @@ class EmployeeNew extends PolymerElement {
 
                 <vaadin-form-item>
                   <label slot="label">First Name</label>
-                  <vaadin-text-field required="" error-message="Please enter first name" class="full-width"></vaadin-text-field>
+                  <vaadin-text-field
+                    required
+                    error-message="Please enter first name"
+                    class="full-width"
+                  ></vaadin-text-field>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
                   <label slot="label">Last Name</label>
-                  <vaadin-text-field required="" error-message="Please enter last name" class="full-width"></vaadin-text-field>
+                  <vaadin-text-field
+                    required
+                    error-message="Please enter last name"
+                    class="full-width"
+                  ></vaadin-text-field>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
                   <label slot="label">Email</label>
-                  <vaadin-text-field required="" error-message="Please enter email" class="full-width"></vaadin-text-field>
+                  <vaadin-text-field
+                    required
+                    error-message="Please enter email"
+                    class="full-width"
+                  ></vaadin-text-field>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
@@ -80,20 +92,32 @@ class EmployeeNew extends PolymerElement {
 
                 <vaadin-form-item>
                   <label slot="label">Dietary Restrictions</label>
-                  <vaadin-combo-box class="full-width" items="[[dietarys]]"></vaadin-combo-box>
+                  <vaadin-combo-box
+                    class="full-width"
+                    items="[[dietarys]]"
+                  ></vaadin-combo-box>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
                   <label slot="label">Add profile picture</label>
-                  <vaadin-upload class="full-width" max-files="1"></vaadin-upload>
+                  <vaadin-upload
+                    class="full-width"
+                    max-files="1"
+                  ></vaadin-upload>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
                   <label slot="label">Preferred language</label>
                   <vaadin-radio-group value="{{radioValue}}">
-                    <vaadin-radio-button value="en">English</vaadin-radio-button>
-                    <vaadin-radio-button value="fr">Français</vaadin-radio-button>
-                    <vaadin-radio-button value="de">Deutsch</vaadin-radio-button>
+                    <vaadin-radio-button value="en">
+                      English
+                    </vaadin-radio-button>
+                    <vaadin-radio-button value="fr">
+                      French
+                    </vaadin-radio-button>
+                    <vaadin-radio-button value="de">
+                      German
+                    </vaadin-radio-button>
                   </vaadin-radio-group>
                 </vaadin-form-item>
 
@@ -114,14 +138,18 @@ class EmployeeNew extends PolymerElement {
 
                 <vaadin-form-item colspan="2">
                   <vaadin-checkbox checked="{{_canSubmit}}">
-                    I have read the <a href="" on-click="toggleDialog">terms and conditions</a>
+                    I have read the
+                    <a href="#" on-click="toggleDialog">terms and conditions</a>
                   </vaadin-checkbox>
                 </vaadin-form-item>
 
                 <vaadin-form-item colspan="2">
-                  <vaadin-button disabled\$="[[!_canSubmit]]" on-click="_submitForm">Submit</vaadin-button>
+                  <vaadin-button
+                    disabled$="[[!_canSubmit]]"
+                    on-click="_submitForm"
+                    >Submit
+                  </vaadin-button>
                 </vaadin-form-item>
-
               </vaadin-form-layout>
             </vaadin-vertical-layout>
           </form>
@@ -146,12 +174,18 @@ class EmployeeNew extends PolymerElement {
         </template>
       </vaadin-notification>
 
-      <vaadin-dialog no-close-on-esc no-close-on-outside-click opened="{{dialogOpen}}">
+      <vaadin-dialog
+        no-close-on-esc
+        no-close-on-outside-click
+        opened="{{dialogOpen}}"
+      >
         <template>
           <vaadin-vertical-layout theme="spacing">
             <div>
               <p><b>Terms and conditions</b></p>
-              <p>This software might just work or not, there is no third option.</p>
+              <p>
+                This software might just work or not, there is no third option.
+              </p>
             </div>
             <vaadin-button on-click="toggleDialog">Ok</vaadin-button>
           </vaadin-vertical-layout>
