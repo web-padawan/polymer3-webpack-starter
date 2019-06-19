@@ -3,8 +3,8 @@ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
 import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
-import '@vaadin/vaadin-item/vaadin-item.js';
-import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '@vaadin/vaadin-tabs/vaadin-tabs.js';
+import '@vaadin/vaadin-tabs/vaadin-tab.js';
 import '../styles/layout-styles.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
@@ -23,18 +23,12 @@ class StarterApp extends PolymerElement {
         :host {
           display: block;
         }
-        vaadin-item {
-          padding: 0;
-        }
         h3 {
           padding: 0 var(--lumo-space-m);
           font-weight: 400;
         }
         a {
-          display: block;
           color: inherit;
-          outline: none;
-          line-height: 36px;
         }
         a:hover {
           text-decoration: none;
@@ -56,14 +50,18 @@ class StarterApp extends PolymerElement {
         <!-- Drawer content -->
         <section slot="drawer">
           <h3>Menu</h3>
-          <vaadin-list-box selected="{{selected}}" aria-controls="mainContent">
-            <vaadin-item>
+          <vaadin-tabs
+            selected="{{selected}}"
+            orientation="vertical"
+            aria-controls="mainContent"
+          >
+            <vaadin-tab>
               <a href="/employee-list">Employee list</a>
-            </vaadin-item>
-            <vaadin-item>
+            </vaadin-tab>
+            <vaadin-tab>
               <a href="/employee-new">New employee</a>
-            </vaadin-item>
-          </vaadin-list-box>
+            </vaadin-tab>
+          </vaadin-tabs>
         </section>
 
         <!-- Main content -->
