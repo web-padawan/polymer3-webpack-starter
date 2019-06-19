@@ -7,9 +7,9 @@
 This is an example project demonstrating how you can build a frontend part of the JavaScript
 application using [Vaadin components](https://vaadin.com/components) and [Vaadin Router](https://github.com/vaadin/vaadin-router) library, and leverage the benefits of the modern tools.
 
-The application uses ES modules for development, and [Webpack](https://webpack.js.org) as
-a module bundler. The optimizations like code splitting, minifying JavaScript and HTML
-(inside of the template string literals) are used to reduce production bundle size.
+[Lumo version ↗](https://polymer3-webpack-starter.herokuapp.com/)
+|
+[Material version ↗](https://whispering-caverns-73554.herokuapp.com)
 
 ## Features
 
@@ -73,7 +73,7 @@ npm run build:analyze
 
 ## Material version
 
-Check out [material](https://github.com/web-padawan/polymer3-webpack-starter/tree/material) branch for Material version of the starter, and a [full diff](https://github.com/web-padawan/polymer3-webpack-starter/compare/material) of changes.
+Check out [material](https://github.com/web-padawan/polymer3-webpack-starter/tree/material) branch for [Material version](https://whispering-caverns-73554.herokuapp.com/employee-list) of the starter, and a [full diff](https://github.com/web-padawan/polymer3-webpack-starter/compare/material) of changes.
 
 ## Known limitations
 
