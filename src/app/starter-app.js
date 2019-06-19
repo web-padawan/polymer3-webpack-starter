@@ -1,14 +1,12 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import '@vaadin/vaadin-lumo-styles/color.js';
-import '@vaadin/vaadin-lumo-styles/spacing.js';
-import '@vaadin/vaadin-lumo-styles/typography.js';
-import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
-import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
-import '@vaadin/vaadin-tabs/vaadin-tabs.js';
-import '@vaadin/vaadin-tabs/vaadin-tab.js';
-import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
+import '@vaadin/vaadin-material-styles/typography.js';
+import '@vaadin/vaadin-app-layout/theme/material/vaadin-app-layout.js';
+import '@vaadin/vaadin-app-layout/theme/material/vaadin-drawer-toggle.js';
+import '@vaadin/vaadin-tabs/theme/material/vaadin-tabs.js';
+import '@vaadin/vaadin-tabs/theme/material/vaadin-tab.js';
+import '@vaadin/vaadin-checkbox/theme/material/vaadin-checkbox.js';
 import '../styles/layout-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
 import { onLocationChanged } from '../routes/utils';
@@ -22,15 +20,14 @@ import { onLocationChanged } from '../routes/utils';
 class StarterApp extends PolymerElement {
   static get template() {
     return html`
-      <style include="lumo-typography">
+      <style include="material-typography">
         :host {
           display: block;
         }
 
         [main-title] {
-          padding: var(--lumo-space-m) 0;
-          font-size: var(--lumo-font-size-xl);
-          line-height: var(--lumo-line-height-m);
+          font-size: 20px;
+          line-height: 1.2;
           font-weight: 400;
         }
 
@@ -41,7 +38,7 @@ class StarterApp extends PolymerElement {
         }
 
         .dark-mode {
-          margin: auto var(--lumo-space-m) var(--lumo-space-m);
+          margin: auto 16px 16px;
         }
       </style>
 

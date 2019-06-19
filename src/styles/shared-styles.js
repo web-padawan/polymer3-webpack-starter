@@ -1,25 +1,26 @@
-import '@vaadin/vaadin-lumo-styles/color.js';
-import '@vaadin/vaadin-lumo-styles/sizing.js';
-import '@vaadin/vaadin-lumo-styles/spacing.js';
-import '@vaadin/vaadin-lumo-styles/style.js';
-import '@vaadin/vaadin-lumo-styles/typography.js';
+import '@vaadin/vaadin-material-styles/color.js';
+import '@vaadin/vaadin-material-styles/shadow.js';
+import '@vaadin/vaadin-material-styles/typography.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { inject } from './style-utils.js';
 
 inject(html`
   <dom-module id="shared-styles">
     <template>
-      <style include="lumo-color lumo-typography">
+      <style include="material-typography">
         h2 {
-          margin: var(--lumo-space-m) 0;
+          margin: 16px 0;
         }
 
         .card {
-          margin: var(--lumo-space-m);
-          padding: var(--lumo-space-m);
-          border: 1px solid var(--lumo-contrast-10pct);
-          border-radius: var(--lumo-border-radius);
-          background: var(--lumo-base-color);
+          margin: 16px;
+          padding: 16px;
+          background: var(--material-background-color);
+          box-shadow: var(--material-shadow-elevation-4dp);
+        }
+
+        a {
+          color: inherit;
         }
       </style>
     </template>

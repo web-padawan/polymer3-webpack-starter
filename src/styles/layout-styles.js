@@ -1,17 +1,13 @@
-import '@vaadin/vaadin-lumo-styles/color.js';
-import '@vaadin/vaadin-lumo-styles/sizing.js';
-import '@vaadin/vaadin-lumo-styles/spacing.js';
+import '@vaadin/vaadin-material-styles/color.js';
+import '@vaadin/vaadin-material-styles/typography.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { inject } from './style-utils.js';
 
 inject(html`
   <custom-style>
-    <style include="lumo-color">
-      html {
-        background-image: linear-gradient(
-          var(--lumo-contrast-5pct),
-          var(--lumo-contrast-5pct)
-        );
+    <style include="material-typography material-color-light">
+      body {
+        background: var(--material-secondary-background-color);
       }
     </style>
   </custom-style>
@@ -21,17 +17,13 @@ inject(html`
   <dom-module id="layout-styles" theme-for="vaadin-app-layout">
     <template>
       <style>
-        [part='drawer'] {
-          background: var(--lumo-base-color);
+        :host {
+          background-color: inherit;
         }
 
         [part='navbar'] {
-          color: var(--lumo-primary-contrast-color);
-          background: var(--lumo-primary-color);
-        }
-
-        [part='navbar']::before {
-          opacity: 0;
+          color: var(--material-primary-contrast-color);
+          background: var(--material-primary-color);
         }
       </style>
     </template>
@@ -43,8 +35,11 @@ inject(html`
     <template>
       <style>
         :host {
-          margin: 0 var(--lumo-space-m);
-          color: currentColor;
+          color: var(--material-primary-contrast-color);
+        }
+
+        :host(:hover) {
+          background: rgba(255, 255, 255, 0.12);
         }
       </style>
     </template>
