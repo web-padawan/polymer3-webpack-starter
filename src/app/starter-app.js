@@ -8,6 +8,7 @@ import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
 import '@vaadin/vaadin-tabs/vaadin-tabs.js';
 import '@vaadin/vaadin-tabs/vaadin-tab.js';
+import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
 import '../styles/layout-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls';
 import { onLocationChanged } from '../routes/utils';
@@ -30,6 +31,14 @@ class StarterApp extends PolymerElement {
           font-size: var(--lumo-font-size-xl);
           line-height: var(--lumo-line-height-m);
           font-weight: 400;
+        }
+        section {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+        .dark-mode {
+          margin: auto var(--lumo-space-m) var(--lumo-space-m);
         }
       </style>
 
@@ -54,6 +63,9 @@ class StarterApp extends PolymerElement {
               <a href="/employee-new">New employee</a>
             </vaadin-tab>
           </vaadin-tabs>
+          <vaadin-checkbox checked="{{dark}}" class="dark-mode">
+            Use dark mode
+          </vaadin-checkbox>
         </section>
 
         <!-- Main content -->
@@ -70,7 +82,11 @@ class StarterApp extends PolymerElement {
 
   static get properties() {
     return {
-      selected: Number
+      selected: Number,
+      dark: {
+        type: Boolean,
+        observer: '_darkChanged'
+      }
     };
   }
 
@@ -93,6 +109,14 @@ class StarterApp extends PolymerElement {
         router.init(this.shadowRoot.querySelector('main'));
       }
     );
+  }
+
+  _darkChanged(dark, oldDark) {
+    if (dark) {
+      document.documentElement.setAttribute('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('theme');
+    }
   }
 
   __onRouteChanged(e) {
