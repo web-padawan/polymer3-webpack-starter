@@ -15,6 +15,7 @@ import '@vaadin/vaadin-notification/vaadin-notification.js';
 import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
+import '@vaadin/vaadin-text-field/vaadin-email-field.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-time-picker/vaadin-time-picker.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
@@ -78,11 +79,11 @@ class EmployeeNew extends PolymerElement {
 
                 <vaadin-form-item>
                   <label slot="label">Email</label>
-                  <vaadin-text-field
+                  <vaadin-email-field
                     required
                     error-message="Please enter email"
                     class="full-width"
-                  ></vaadin-text-field>
+                  ></vaadin-email-field>
                 </vaadin-form-item>
 
                 <vaadin-form-item>
