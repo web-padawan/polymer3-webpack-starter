@@ -25,12 +25,6 @@ class StarterApp extends PolymerElement {
         :host {
           display: block;
         }
-        a {
-          color: inherit;
-        }
-        a:hover {
-          text-decoration: none;
-        }
         [main-title] {
           padding: var(--lumo-space-m) 0;
           font-size: var(--lumo-font-size-xl);

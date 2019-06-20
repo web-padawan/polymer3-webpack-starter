@@ -13,7 +13,6 @@ inject(html`
         }
 
         [part='navbar'] {
-          align-items: center;
           color: var(--lumo-base-color);
           background: var(--lumo-primary-color);
         }
@@ -27,11 +26,7 @@ inject(html`
     <template>
       <style>
         :host {
-          width: var(--lumo-size-l);
-          height: var(--lumo-size-l);
           margin: 0 var(--lumo-space-m);
-          padding: 0;
-          background: transparent;
           color: currentColor;
         }
       </style>
