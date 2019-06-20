@@ -5,6 +5,19 @@ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { inject } from './style-utils.js';
 
 inject(html`
+  <custom-style>
+    <style include="lumo-color">
+      html {
+        background-image: linear-gradient(
+          var(--lumo-contrast-5pct),
+          var(--lumo-contrast-5pct)
+        );
+      }
+    </style>
+  </custom-style>
+`);
+
+inject(html`
   <dom-module id="layout-styles" theme-for="vaadin-app-layout">
     <template>
       <style>
@@ -13,7 +26,7 @@ inject(html`
         }
 
         [part='navbar'] {
-          color: var(--lumo-base-color);
+          color: var(--lumo-primary-contrast-color);
           background: var(--lumo-primary-color);
         }
       </style>

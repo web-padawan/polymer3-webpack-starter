@@ -21,7 +21,7 @@ import { onLocationChanged } from '../routes/utils';
 class StarterApp extends PolymerElement {
   static get template() {
     return html`
-      <style include="lumo-color lumo-typography">
+      <style include="lumo-typography">
         :host {
           display: block;
         }

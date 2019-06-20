@@ -16,9 +16,9 @@ inject(html`
         .card {
           margin: var(--lumo-space-m);
           padding: var(--lumo-space-m);
+          border: 1px solid var(--lumo-contrast-10pct);
           border-radius: var(--lumo-border-radius);
           background: var(--lumo-base-color);
-          box-shadow: var(--lumo-box-shadow-s);
         }
       </style>
     </template>
