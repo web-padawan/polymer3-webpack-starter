@@ -18,6 +18,7 @@ class EmployeeList extends PolymerElement {
         :host {
           display: block;
         }
+
         vaadin-grid-filter,
         vaadin-text-field {
           width: 100%;

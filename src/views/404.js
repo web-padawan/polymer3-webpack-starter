@@ -13,7 +13,7 @@ class App404 extends PolymerElement {
     return html`
       <style include="shared-styles">
         :host {
-          display: block
+          display: block;
         }
       </style>
       <div class="card">

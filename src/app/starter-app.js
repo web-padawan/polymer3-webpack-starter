@@ -26,17 +26,20 @@ class StarterApp extends PolymerElement {
         :host {
           display: block;
         }
+
         [main-title] {
           padding: var(--lumo-space-m) 0;
           font-size: var(--lumo-font-size-xl);
           line-height: var(--lumo-line-height-m);
           font-weight: 400;
         }
+
         section {
           display: flex;
           flex-direction: column;
           height: 100%;
         }
+
         .dark-mode {
           margin: auto var(--lumo-space-m) var(--lumo-space-m);
         }

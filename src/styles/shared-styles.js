@@ -13,6 +13,7 @@ inject(html`
         h2 {
           margin: var(--lumo-space-m) 0;
         }
+
         .card {
           margin: var(--lumo-space-m);
           padding: var(--lumo-space-m);
