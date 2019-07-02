@@ -42,7 +42,19 @@ Start `webpack-dev-server` on localhost `http://127.0.0.1:3000`:
 npm run dev
 ```
 
-## Lint JavaScript
+## Lint JS
+
+```sh
+npm run lint:js
+```
+
+## Lint CSS
+
+```sh
+npm run lint:css
+```
+
+## Lint JS and CSS
 
 ```sh
 npm run lint
