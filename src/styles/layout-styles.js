@@ -29,6 +29,10 @@ inject(html`
           color: var(--lumo-primary-contrast-color);
           background: var(--lumo-primary-color);
         }
+
+        [part='navbar']::before {
+          opacity: 0;
+        }
       </style>
     </template>
   </dom-module>
